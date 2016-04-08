@@ -36,8 +36,8 @@ public class ProductMapper {
 		product.setCode(productDto.getCode());
 		product.setDescription(productDto.getDescription());
 		product.setName(productDto.getName());
-		/*if(productDto.getCategoryDto()!=null)
-			product.setCategory(CategoryMapper.DtoToEntity(productDto.getCategoryDto()));*/
+		if(productDto.getCategoryDto()!=null)
+			product.setCategory(CategoryMapper.DtoToEntity(productDto.getCategoryDto()));
 		if(productDto.getUnitDto()!=null)
 			product.setUnit(UnitMapper.DtoToEntity(productDto.getUnitDto()));
 	}
