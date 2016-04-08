@@ -33,7 +33,6 @@ public class Product {
 	@Column(name = "Name", nullable = false)
 	private String name;
 	
-	@NotNull
 	@Size(min = 5, max = 50)
 	@Column(name = "Description", nullable = false)
 	private String description;
@@ -44,6 +43,11 @@ public class Product {
 	@JoinColumn(name = "Id_Category")
 	private Category category;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonBackReference
+	@JoinColumn(name = "Id_Unit")
+	private Unit unit;
+	
 	public String getCode() {
 		return code;
 	}
@@ -81,5 +85,15 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	public Unit getUnit() {
+		return unit;
+	}
+
+	public void setUnit(Unit unit) {
+		this.unit = unit;
+	}
+	
+	
 	
 }

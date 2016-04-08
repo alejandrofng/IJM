@@ -28,13 +28,12 @@ public class CategoryServiceImpl implements CategoryService {
 	public void updateCategory(CategoryDto categoryDto) {
 		Category category = categoryDao.findById(categoryDto.getCode());
 		category.setName(categoryDto.getName());
-		Category parent = categoryDao.findById(categoryDto.getParent().getCode());
-		category.setParent(parent);		
+		categoryDao.update(category);
 	}
 
 	@Override
-	public void deleteCategory(String code) {
-		Category category = categoryDao.findById(Integer.parseInt(code));
+	public void deleteCategory(long code) {
+		Category category = categoryDao.findById(code);
 		categoryDao.delete(category);
 	}
 
@@ -49,22 +48,22 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public CategoryDto findCategoryDtoByCode(String code) {
-		Category category = categoryDao.findById(Integer.parseInt(code));
+	public CategoryDto findCategoryDtoByCode(long code) {
+		Category category = categoryDao.findById(code);
 		return CategoryMapper.EntityToDto(category);
 	}
 
 	@Override
 	public boolean isCategoryNameAlreadyExists(CategoryDto categoryDto) {
 		
-		if(categoryDao.findByParentAndName(categoryDto.getParent().getCode(), categoryDto.getName())!=null)
+		if(categoryDao.findByName(categoryDto.getName())!=null)
 			return true;
 		return false;
 	}
 
 	@Override
-	public boolean isCategoryExists(String code) {
-		if(categoryDao.findById(Integer.parseInt(code))!=null)
+	public boolean isCategoryExists(long code) {
+		if(categoryDao.findById(code)!=null)
 			return true;
 		return false;
 	}

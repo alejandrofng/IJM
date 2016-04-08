@@ -12,9 +12,9 @@ public interface CategoryDao {
 
 	public List<Category> findAll();
 
-	public Category findById(int id);
+	public Category findById(long id);
 
-	public Category findByParentAndName(int id_Parent, String name);
+	public Category findByName(String name);
 	
 	public void update(Category category);
 }

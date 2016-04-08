@@ -10,15 +10,16 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "Category")
-public class Category {
+@Table(name = "Unit")
+public class Unit {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
 	private long id;
-
+	
 	@NotNull
-	@Size(min = 5, max = 50)
+	@Size(min = 2, max = 50)
 	@Column(name = "Name", nullable = false)
 	private String name;
 
@@ -37,5 +38,6 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	
 }
