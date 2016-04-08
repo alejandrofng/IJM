@@ -12,8 +12,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 @Entity
 @Table(name = "Product")
 public class Product {
@@ -39,12 +37,10 @@ public class Product {
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonBackReference
 	@JoinColumn(name = "Id_Category")
 	private Category category;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonBackReference
 	@JoinColumn(name = "Id_Unit")
 	private Unit unit;
 	
