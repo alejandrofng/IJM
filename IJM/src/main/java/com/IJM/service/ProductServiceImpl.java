@@ -1,9 +1,7 @@
 package com.IJM.service;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,11 +29,9 @@ public class ProductServiceImpl implements ProductService {
 	public void updateProduct(ProductDto productDto, String code) {
 		Product product = productDAO.findByCode(code);
 		if (product != null) {
-			product.setCode(productDto.getCode());
-			product.setDescription(productDto.getDescription());
-			product.setName(productDto.getName());
+			ProductMapper.DtoToEntity(productDto, product);
+			productDAO.update(product);
 		}
-		productDAO.update(product);
 	}
 
 	@Override
@@ -49,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
 		Product product = productDAO.findByCode(code);
 		if(product!=null)
 		{
-		return ProductMapper.EntityToDto(product);
+			return ProductMapper.EntityToDto(product);
 		}
 		else return null;
 	}
@@ -68,19 +64,6 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public boolean isProductExist(String code) {
 		return (productDAO.findByCode(code)!=null);
-	}
-
-	@Override
-	public Set<ProductDto> EntitySetToDtoSet(Set<Product> products) {
-		Set<ProductDto> productsDto = new HashSet<ProductDto>();
-		for (Product product : products) {
-		    ProductDto productDto = new ProductDto();
-		    productDto.setCode(product.getCode());
-		    productDto.setDescription(product.getDescription());
-		    productDto.setName(product.getName());
-		    productsDto.add(productDto);
-		}
-		return productsDto;
 	}
 
 }
