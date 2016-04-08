@@ -34,12 +34,10 @@ public class Product {
 	@Size(min = 5, max = 50)
 	@Column(name = "Description", nullable = false)
 	private String description;
-
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "Id_Category")
 	private Category category;
-
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "Id_Unit")
 	private Unit unit;
 	
@@ -78,15 +76,23 @@ public class Product {
 	}
 
 	public void setCategory(Category category) {
-		this.category = category;
+		if(this.category==null||!this.category.equals(category))
+		{
+			this.category=category;
+		}
+		return;
 	}
-
+	
 	public Unit getUnit() {
 		return unit;
 	}
 
 	public void setUnit(Unit unit) {
-		this.unit = unit;
+		if(this.unit==null||!this.unit.equals(unit))
+		{
+			this.unit=unit;
+		}
+		return;
 	}
 	
 	
