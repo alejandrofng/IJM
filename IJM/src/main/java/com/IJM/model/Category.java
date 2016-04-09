@@ -12,10 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "Category")
@@ -30,13 +30,13 @@ public class Category {
 	@Column(name = "Name", nullable = false)
 	private String name;
 
-	@ManyToOne(cascade={CascadeType.PERSIST}, fetch=FetchType.LAZY)
+	@ManyToOne(cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
+	
     @JoinColumn(name="Id_Parent")
 	private Category parent;
 	
-	@OneToMany 
-	@OrderColumn 
-	@JoinColumn(name = "Id_Parent")
+	@OneToMany(fetch = FetchType.LAZY) 
+	@JoinColumn(name = "parent")
 	private Set<Category> children;
 
 	public int getId() {
