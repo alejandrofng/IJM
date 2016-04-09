@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.IJM.model.Category;
 
 @Repository("categoryDao")
-public class CategoryDaoImpl extends AbstractDao<Integer, Category> implements CategoryDao{
+public class CategoryDaoImpl extends AbstractDao<Long, Category> implements CategoryDao{
 
 	@Override
 	public void save(Category category) {
@@ -30,14 +30,13 @@ public class CategoryDaoImpl extends AbstractDao<Integer, Category> implements C
 	}
 
 	@Override
-	public Category findById(int id) {
+	public Category findById(long id) {
 		return getByKey(id);
 	}
 
-	public Category findByParentAndName(int id_Parent,String name){
+	public Category findByName(String name){
 		Criteria criteria = getSession().createCriteria(Category.class);
-		criteria.add(Restrictions.eq("Id_Parent",id_Parent));
-		criteria.add(Restrictions.eq("Name",name));
+		criteria.add(Restrictions.eq("name",name));
 		return (Category) criteria.uniqueResult();
 	}
 	@Override

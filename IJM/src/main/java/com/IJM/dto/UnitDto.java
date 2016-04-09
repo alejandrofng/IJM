@@ -1,19 +1,10 @@
 package com.IJM.dto;
 
-public class CategoryDto {
+public class UnitDto {
 
 	private long code;
 	
 	private String name;
-	
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public long getCode() {
 		return code;
@@ -21,6 +12,14 @@ public class CategoryDto {
 
 	public void setCode(long code) {
 		this.code = code;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

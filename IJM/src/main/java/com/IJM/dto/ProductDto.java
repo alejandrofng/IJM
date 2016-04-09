@@ -1,7 +1,5 @@
 package com.IJM.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class ProductDto {
 	
 	private String code;
@@ -10,8 +8,9 @@ public class ProductDto {
 	
 	private String description;
 	
-	@JsonIgnore
 	private CategoryDto categoryDto;
+	
+	private UnitDto unitDto;
 	
 	public String getCode() {
 		return code;
@@ -36,14 +35,21 @@ public class ProductDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public CategoryDto getCategoryDto() {
 		return categoryDto;
 	}
-
+	
 	public void setCategoryDto(CategoryDto categoryDto) {
 		this.categoryDto = categoryDto;
 	}
 
+	public UnitDto getUnitDto() {
+		return unitDto;
+	}
+
+	public void setUnitDto(UnitDto unitDto) {
+		this.unitDto = unitDto;
+	}
 	
 }

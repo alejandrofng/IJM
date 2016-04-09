@@ -1,8 +1,8 @@
 package com.IJM.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,8 +11,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "Product")
@@ -33,17 +31,16 @@ public class Product {
 	@Column(name = "Name", nullable = false)
 	private String name;
 	
-	@NotNull
 	@Size(min = 5, max = 50)
 	@Column(name = "Description", nullable = false)
 	private String description;
-
-	@NotNull
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonBackReference
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "Id_Category")
 	private Category category;
-
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "Id_Unit")
+	private Unit unit;
+	
 	public String getCode() {
 		return code;
 	}
@@ -79,7 +76,25 @@ public class Product {
 	}
 
 	public void setCategory(Category category) {
-		this.category = category;
+		if(this.category==null||!this.category.equals(category))
+		{
+			this.category=category;
+		}
+		return;
 	}
+	
+	public Unit getUnit() {
+		return unit;
+	}
+
+	public void setUnit(Unit unit) {
+		if(this.unit==null||!this.unit.equals(unit))
+		{
+			this.unit=unit;
+		}
+		return;
+	}
+	
+	
 	
 }

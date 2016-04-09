@@ -56,7 +56,7 @@ public class CategoryController {
 	}
 
 	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
-	public ResponseEntity<CategoryDto> getCategory(@PathVariable("code") String code) {
+	public ResponseEntity<CategoryDto> getCategory(@PathVariable("code") long code) {
 		System.out.println("Fetching Category with code " + code);
 
 		CategoryDto categoryDto = categoryService.findCategoryDtoByCode(code);
@@ -68,7 +68,7 @@ public class CategoryController {
 	}
 
 	@RequestMapping(value = "/{code}", method = RequestMethod.DELETE)
-	public ResponseEntity<CategoryDto> deleteCategory(@PathVariable("code") String code) {
+	public ResponseEntity<CategoryDto> deleteCategory(@PathVariable("code") long code) {
 		System.out.println("Fetching & Deleting Category with id " + code);
 
 		

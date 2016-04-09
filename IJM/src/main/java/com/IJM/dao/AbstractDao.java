@@ -42,7 +42,9 @@ public abstract class AbstractDao<PK extends Serializable, T> {
 		return getSession().createCriteria(persistentClass);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void update(T entity) {
-		getSession().update(entity);
+		T newEntity = (T) getSession().merge(entity);
+		getSession().update(newEntity);
 	}
 }
