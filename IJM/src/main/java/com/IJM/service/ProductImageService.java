@@ -3,22 +3,18 @@ package com.IJM.service;
 import java.util.List;
 
 import com.IJM.dto.ProductImageDto;
-import com.IJM.model.ProductImage;
-
 
 public interface ProductImageService {
 
-	public void saveProductImage(ProductImageDto  productImageDto);
+	public void saveProduct(ProductImageDto  productImageDto);
 	
-	void updateProductImage(ProductImageDto ProductImageDto);
+	void updateProduct(ProductImageDto productImageDto, long code);
 	
-	public void deleteProductImage(int id);
+	public void deleteProduct(String code);
+	
+	public ProductImageDto findProductImageDtoByCode(long code);
 
 	public List<ProductImageDto> findAllProductsImageDto();
-	
-	public ProductImageDto EntityToDto(ProductImage productImage);
-	
-	public ProductImage DtoToEntity(ProductImageDto productImageDto);
-	
-	public ProductImageDto findProductImageDtoById (int id);
+
+	public boolean isProductImageExist(long code);
 }
