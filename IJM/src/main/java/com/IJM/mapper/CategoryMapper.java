@@ -12,6 +12,10 @@ public class CategoryMapper {
 		CategoryDto categoryDto = new CategoryDto();
 		categoryDto.setName(category.getName());
 		categoryDto.setCode(category.getId());
+		if(category.getParent()!=null)
+		{
+			categoryDto.setParent(EntityToDto(category.getParent()));
+		}
 		return categoryDto;
 	}
 
@@ -19,6 +23,10 @@ public class CategoryMapper {
 		Category category = new Category();
 		category.setName(categoryDto.getName());
 		category.setId((categoryDto.getCode()));
+		if(categoryDto.getParent()!=null)
+		{
+			category.setParent(DtoToEntity(categoryDto.getParent()));
+		}
 		return category;
 	}
 

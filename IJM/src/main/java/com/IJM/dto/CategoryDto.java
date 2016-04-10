@@ -6,7 +6,8 @@ public class CategoryDto {
 	
 	private String name;
 	
-
+	private CategoryDto parent;
+	
 	public String getName() {
 		return name;
 	}
@@ -22,6 +23,13 @@ public class CategoryDto {
 	public void setCode(long code) {
 		this.code = code;
 	}
-	
+
+	public CategoryDto getParent() {
+		return parent;
+	}
+
+	public void setParent(CategoryDto parent) {
+		this.parent = parent;
+	}
 	
 }

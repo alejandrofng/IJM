@@ -34,9 +34,11 @@ public class Product {
 	@Size(min = 5, max = 50)
 	@Column(name = "Description", nullable = false)
 	private String description;
+	
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "Id_Category")
 	private Category category;
+	
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "Id_Unit")
 	private Unit unit;
