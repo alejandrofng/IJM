@@ -6,11 +6,11 @@ import com.IJM.dto.ProductImageDto;
 
 public interface ProductImageService {
 
-	public void saveProductImage(ProductImageDto  productImageDto);
+	public void saveProduct(ProductImageDto  productImageDto);
 	
-	void updateProductImage(ProductImageDto productImageDto, long code);
+	void updateProduct(ProductImageDto productImageDto, long code);
 	
-	public void deleteProductImage(long code);
+	public void deleteProduct(String code);
 	
 	public ProductImageDto findProductImageDtoByCode(long code);
 
