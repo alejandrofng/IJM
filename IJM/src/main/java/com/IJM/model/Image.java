@@ -35,7 +35,7 @@ public class Image {
 	@Column(name = "Size",nullable = false)
 	private int size;
 	
-	@Column(name = "File_Type",nullable = false)
+	@Column(name = "Id_File_Type",nullable = false)
 	private FileType fileType;
 
 	@Column(name = "Last_Updated",nullable = false)
