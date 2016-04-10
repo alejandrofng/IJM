@@ -18,19 +18,19 @@ public class ProductImageServiceImpl implements ProductImageService{
 	ProductImageDao productImageDao;
 
 	@Override
-	public void saveProduct(ProductImageDto productImageDto) {
+	public void saveProductImage(ProductImageDto productImageDto) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void updateProduct(ProductImageDto productImageDto, long code) {
+	public void updateProductImage(ProductImageDto productImageDto, long code) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteProduct(String code) {
+	public void deleteProductImage(long code) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -52,4 +52,6 @@ public class ProductImageServiceImpl implements ProductImageService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
 }

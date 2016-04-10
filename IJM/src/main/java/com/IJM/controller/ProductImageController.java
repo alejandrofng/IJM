@@ -28,12 +28,12 @@ public class ProductImageController {
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> updateProduct(@PathVariable("id") int id, @RequestBody ProductImageDto productImageDto) {
-		System.out.println("Updating ProductImageDto " + id);
+	@RequestMapping(value = "/{code}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> updateProduct(@PathVariable("code") long code, @RequestBody ProductImageDto productImageDto) {
+		System.out.println("Updating ProductImageDto " + code);
 		HttpStatus status;
 		try {
-			productImageService.updateProductImage(productImageDto);
+			productImageService.updateProductImage(productImageDto, code);
 			status = HttpStatus.OK;
 		} catch (Exception e) {
 			status = HttpStatus.CONFLICT;
@@ -50,29 +50,29 @@ public class ProductImageController {
 		return new ResponseEntity<List<ProductImageDto>>(productsImageDto, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<ProductImageDto> getProduct(@PathVariable("id") int id) {
-		System.out.println("Fetching ProductImageDto with id " + id);
+	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
+	public ResponseEntity<ProductImageDto> getProduct(@PathVariable("code") long code) {
+		System.out.println("Fetching ProductImageDto with id " + code);
 
-		ProductImageDto productimageDto = productImageService.findProductImageDtoById(id);
+		ProductImageDto productimageDto = productImageService.findProductImageDtoByCode(code);
 		if (productimageDto == null) {
-			System.out.println("ProductImageDto with id " + id + " not found");
+			System.out.println("ProductImageDto with id " + code + " not found");
 			return new ResponseEntity<ProductImageDto>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<ProductImageDto>(productimageDto, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<ProductImageDto> deleteSupplier(@PathVariable("id") int id) {
-		System.out.println("Fetching & Deleting ProductImageDto with id " + id);
+	@RequestMapping(value = "/{code}", method = RequestMethod.DELETE)
+	public ResponseEntity<ProductImageDto> deleteSupplier(@PathVariable("code") long code) {
+		System.out.println("Fetching & Deleting ProductImageDto with id " + code);
 
 		
-		if (productImageService.findProductImageDtoById(id)==null) {
-			System.out.println("Unable to delete. ProductImageDto with id " + id + " not found");
+		if (productImageService.findProductImageDtoByCode(code)==null) {
+			System.out.println("Unable to delete. ProductImageDto with id " + code + " not found");
 			return new ResponseEntity<ProductImageDto>(HttpStatus.NOT_FOUND);
 		}
 		
-		productImageService.deleteProductImage(id);
+		productImageService.deleteProductImage(code);
 		return new ResponseEntity<ProductImageDto>(HttpStatus.NO_CONTENT);
 	}
 }
