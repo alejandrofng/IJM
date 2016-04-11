@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.IJM.dao.UnitDao;
-import com.IJM.dto.UnitDto;
-import com.IJM.mapper.UnitMapper;
 import com.IJM.model.Unit;
 
 @Transactional
@@ -19,15 +17,12 @@ public class UnitServiceImpl implements UnitService{
 	UnitDao unitDao;
 	
 	@Override
-	public void saveUnit(UnitDto unitDto) {
-		Unit unit = UnitMapper.DtoToEntity(unitDto);
+	public void saveUnit(Unit unit) {
 		unitDao.save(unit);
 	}
 
 	@Override
-	public void updateUnit(UnitDto unitDto) {
-		Unit unit = unitDao.findById(unitDto.getCode());
-		unit.setName(unitDto.getName());
+	public void updateUnit(Unit unit) {
 		unitDao.update(unit);
 	}
 
@@ -39,24 +34,20 @@ public class UnitServiceImpl implements UnitService{
 	}
 
 	@Override
-	public List<UnitDto> findAllUnitsDto() {
+	public List<Unit> findAllUnits() {
 		List<Unit> units = unitDao.findAll();
-		if(!units.isEmpty())
-		{
-			return UnitMapper.EntityListToDtoList(units);
-		}
-		else return null;
+		return units;
 	}
 
 	@Override
-	public UnitDto findUnitDtoByCode(long code) {
+	public Unit findUnitByCode(long code) {
 		Unit unit = unitDao.findById(code);
-		return UnitMapper.EntityToDto(unit);
+		return unit;
 	}
 
 	@Override
-	public boolean isUnitNameAlreadyExists(UnitDto unitDto) {
-		if(unitDao.findByName(unitDto.getName())!=null)
+	public boolean isUnitNameAlreadyExists(Unit unit) {
+		if(unitDao.findByName(unit.getName())!=null)
 			return true;
 		return false;
 	}

@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.IJM.dao.ProductDao;
-import com.IJM.dto.ProductDto;
-import com.IJM.mapper.ProductMapper;
 import com.IJM.model.Product;
 
 @Transactional
@@ -20,17 +18,15 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDao productDAO;
 
 	@Override
-	public void saveProduct(ProductDto productDto) {
-		Product product = ProductMapper.DtoToEntity(productDto);
+	public void saveProduct(Product product) {
 		productDAO.save(product);
 	}
 
 	@Override
-	public void updateProduct(ProductDto productDto, String code) {
+	public void updateProduct(Product Newproduct, String code) {
 		Product product = productDAO.findByCode(code);
 		if (product != null) {
-			ProductMapper.DtoToEntity(productDto, product);
-			productDAO.update(product);
+			productDAO.update(product);//arreglar
 		}
 	}
 
@@ -41,24 +37,15 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductDto findProductDtoByCode(String code) {
+	public Product findProductDtoByCode(String code) {
 		Product product = productDAO.findByCode(code);
-		if(product!=null)
-		{
-			return ProductMapper.EntityToDto(product);
-		}
-		else return null;
+		return product;
 	}
 
 	@Override
-	public List<ProductDto> findAllProductsDto() {
+	public List<Product> findAllProductsDto() {
 		List<Product> products = productDAO.findAll();
-		List<ProductDto> productsDto = new LinkedList<>();
-		for (Product product : products) {
-			ProductDto productDto = ProductMapper.EntityToDto(product);
-			productsDto.add(productDto);
-		}
-		return productsDto;
+		return products;
 	}
 
 	@Override

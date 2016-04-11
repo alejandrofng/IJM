@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.IJM.dao.ImageDao;
-import com.IJM.dto.ImageDto;
-import com.IJM.mapper.ImageMapper;
 import com.IJM.model.Image;
 
 @Transactional
@@ -17,21 +15,20 @@ public class ImageServiceImpl implements ImageService{
 	ImageDao imageDao;
 	
 	@Override
-	public ImageDto findImageDtoById(long id) {
+	public Image findImageById(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void saveImage(ImageDto imageDto) {
-		imageDao.save(ImageMapper.DtoToEntity(imageDto));
+	public void saveImage(Image image) {
+		imageDao.save(image);
 		
 	}
 
 	@Override
-	public void updateImage(ImageDto imageDto) {
-		Image image = imageDao.findById(imageDto.getId());
-		imageDao.update(ImageMapper.DtoToEntity(imageDto,image));
+	public void updateImage(Image image) {
+		imageDao.update(image);
 		
 	}
 

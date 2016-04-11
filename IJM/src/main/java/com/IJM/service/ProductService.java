@@ -2,19 +2,19 @@ package com.IJM.service;
 
 import java.util.List;
 
-import com.IJM.dto.ProductDto;
+import com.IJM.model.Product;
 
 public interface ProductService {
 
-	public void saveProduct(ProductDto  productDto);
+	public void saveProduct(Product  product);
 	
-	void updateProduct(ProductDto productDto, String code);
+	void updateProduct(Product product, String code);
 	
 	public void deleteProduct(String code);
 	
-	public ProductDto findProductDtoByCode(String code);
+	public Product findProductDtoByCode(String code);
 
-	public List<ProductDto> findAllProductsDto();
+	public List<Product> findAllProductsDto();
 
 	public boolean isProductExist(String code);
 		

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.IJM.dao.ProductImageDao;
-import com.IJM.dto.ProductImageDto;
+import com.IJM.model.ProductImage;
 
 
 @Transactional
@@ -18,13 +18,13 @@ public class ProductImageServiceImpl implements ProductImageService{
 	ProductImageDao productImageDao;
 
 	@Override
-	public void saveProduct(ProductImageDto productImageDto) {
+	public void saveProduct(ProductImage productImage) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void updateProduct(ProductImageDto productImageDto, long code) {
+	public void updateProduct(ProductImage productImage, long code) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -36,13 +36,13 @@ public class ProductImageServiceImpl implements ProductImageService{
 	}
 
 	@Override
-	public ProductImageDto findProductImageDtoByCode(long code) {
+	public ProductImage findProductImageByCode(long code) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ProductImageDto> findAllProductsImageDto() {
+	public List<ProductImage> findAllProductsImageDto() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -52,4 +52,5 @@ public class ProductImageServiceImpl implements ProductImageService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 }

@@ -2,21 +2,22 @@ package com.IJM.service;
 
 import java.util.List;
 
-import com.IJM.dto.CategoryDto;
+import com.IJM.model.Category;
+
 
 public interface CategoryService {
 	
-	public void saveCategory(CategoryDto  categoryDto);
+	public void saveCategory(Category  category);
 	
-	void updateCategory(CategoryDto categoryDto);
+	void updateCategory(Category category);
 	
 	public void deleteCategory(long code);
 
-	public List<CategoryDto> findAllCategoriesDto();
+	public List<Category> findAllCategories();
 	
-	public CategoryDto findCategoryDtoByCode (long code);
+	public Category findCategoryByCode (long code);
 	
-	public boolean isCategoryNameAlreadyExists (CategoryDto categoryDto);
+	public boolean isCategoryNameAlreadyExists (Category category);
 	
 	public boolean isCategoryExists(long code);
 }

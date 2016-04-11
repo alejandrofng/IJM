@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.IJM.dao.CategoryDao;
-import com.IJM.dto.CategoryDto;
 import com.IJM.model.Category;
-import com.IJM.mapper.CategoryMapper;
 
 @Transactional
 @Service("categoryService")
@@ -19,15 +17,12 @@ public class CategoryServiceImpl implements CategoryService {
 	CategoryDao categoryDao;
 	
 	@Override
-	public void saveCategory(CategoryDto categoryDto) {
-		Category category = CategoryMapper.DtoToEntity(categoryDto);
+	public void saveCategory(Category category) {
 		categoryDao.save(category);
 	}
 
 	@Override
-	public void updateCategory(CategoryDto categoryDto) {
-		Category category = categoryDao.findById(categoryDto.getCode());
-		category.setName(categoryDto.getName());
+	public void updateCategory(Category category) {
 		categoryDao.update(category);
 	}
 
@@ -38,25 +33,20 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public List<CategoryDto> findAllCategoriesDto() {
+	public List<Category> findAllCategories() {
 		List<Category> categories = categoryDao.findAll();
-		if(!categories.isEmpty())
-		{
-			return CategoryMapper.EntityListToDtoList(categories);
-		}
-		else return null;
+		return categories;
 	}
 
 	@Override
-	public CategoryDto findCategoryDtoByCode(long code) {
-		Category category = categoryDao.findById(code);
-		return CategoryMapper.EntityToDto(category);
+	public Category findCategoryByCode(long code) {
+		return null;
 	}
 
 	@Override
-	public boolean isCategoryNameAlreadyExists(CategoryDto categoryDto) {
+	public boolean isCategoryNameAlreadyExists(Category category) {
 		
-		if(categoryDao.findByName(categoryDto.getName())!=null)
+		if(categoryDao.findByName(category.getName())!=null)
 			return true;
 		return false;
 	}
