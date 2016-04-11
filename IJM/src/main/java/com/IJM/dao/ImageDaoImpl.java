@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import com.IJM.model.Image;
 
+@Repository("imageDao")
 public class ImageDaoImpl extends AbstractDao<Long,Image> implements ImageDao{
 
 	@Override

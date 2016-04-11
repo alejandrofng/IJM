@@ -35,9 +35,6 @@ public class Image {
 	@Column(name = "Size",nullable = false)
 	private int size;
 	
-	@Column(name = "Id_File_Type",nullable = false)
-	private FileType fileType;
-
 	@Column(name = "Last_Updated",nullable = false)
 	private Timestamp last_Updated;
 	
@@ -87,14 +84,6 @@ public class Image {
 
 	public void setSize(int size) {
 		this.size = size;
-	}
-
-	public FileType getFileType() {
-		return fileType;
-	}
-
-	public void setFileType(FileType fileType) {
-		this.fileType = fileType;
 	}
 
 	public Timestamp getLast_Updated() {
