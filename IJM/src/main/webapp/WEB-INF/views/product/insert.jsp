@@ -14,18 +14,28 @@
 <form:errors path="product.*"/>
 	<c:if test="${not empty product}">
 	<form action="/IJM/product/update/${product.code}" method="POST">
-	   <input type="text" name="name" value="${product.name}"/>
+		<label for="code">Codigo</label>
+	   	<input id="code" type="text" name="code" value="${product.code}"/>
+	  	<label for="name">Nombre</label>
+	   	<input id="name" type="text" name="name" value="${product.name}"/>
+	   	<label for="description">Descripcion</label>
+	   	<input id="description" type="text" name="description" value="${product.description}"/>
 	</c:if>
 	<c:if test="${empty product}">
 	<form action="/IJM/product/insert" method="POST">
-	   <input type="text" name="name"/>
+		<label for="code">Codigo</label>
+	   	<input id="code" type="text" name="code"/>
+	   	<label for="name">Nombre</label>
+	  	<input id="name" type="text" name="name"/>
+	  		   	<label for="description">Descripcion</label>
+	   	<input id="description" type="text" name="description"/>
 	</c:if>
-	<select name="product.category.id">
+	<select name="category.id">
     	<c:forEach items="${categories}" var="category">	    
 	        <option value="${category.id}"><c:out value="${category.name}"/></option>
 		</c:forEach>
   </select>
-  	<select name="product.unit.id">
+  	<select name="unit.id">
     	<c:forEach items="${units}" var="unit">	    
 	        <option value="${unit.id}"><c:out value="${unit.name}"/></option>
 		</c:forEach>

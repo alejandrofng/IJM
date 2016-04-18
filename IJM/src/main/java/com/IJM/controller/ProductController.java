@@ -64,7 +64,7 @@ public class ProductController {
 		return viewAll();
 	}
 	@RequestMapping(value="/update/{code}",method=RequestMethod.GET)
-	public ModelAndView update(@PathVariable("id") String code )
+	public ModelAndView update(@PathVariable("code") String code )
 	{
 		ModelAndView model = new ModelAndView("/product/insert");
 		
