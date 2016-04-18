@@ -43,5 +43,13 @@ public class CategoryDaoImpl extends AbstractDao<Long, Category> implements Cate
 	public void update(Category category) {
 		super.update(category);
 	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Category> findAllRoot()
+	{
+		Criteria criteria = getSession().createCriteria(Category.class);
+		criteria.add(Restrictions.isNull("parent"));
+		return (List<Category>) criteria.list();
+	}
 
 }

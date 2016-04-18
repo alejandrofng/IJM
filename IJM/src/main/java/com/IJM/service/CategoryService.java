@@ -20,4 +20,6 @@ public interface CategoryService {
 	public boolean isCategoryNameAlreadyExists (Category category);
 	
 	public boolean isCategoryExists(long code);
+	
+	public List<Category> findAllRootCategories();
 }

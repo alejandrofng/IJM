@@ -17,4 +17,6 @@ public interface CategoryDao {
 	public Category findByName(String name);
 	
 	public void update(Category category);
+	
+	public List<Category> findAllRoot();
 }

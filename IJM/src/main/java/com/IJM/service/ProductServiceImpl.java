@@ -23,11 +23,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void updateProduct(Product Newproduct, String code) {
-		Product product = productDAO.findByCode(code);
-		if (product != null) {
-			productDAO.update(product);//arreglar
-		}
+	public void updateProduct(Product newProduct) {
+		productDAO.update(newProduct);//arreglar
 	}
 
 	@Override

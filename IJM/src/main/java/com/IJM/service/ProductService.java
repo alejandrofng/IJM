@@ -8,7 +8,7 @@ public interface ProductService {
 
 	public void saveProduct(Product  product);
 	
-	void updateProduct(Product product, String code);
+	void updateProduct(Product product);
 	
 	public void deleteProduct(String code);
 	

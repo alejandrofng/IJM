@@ -40,7 +40,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public Category findCategoryByCode(long code) {
-		return null;
+		return categoryDao.findById(code);
 	}
 
 	@Override
@@ -56,6 +56,11 @@ public class CategoryServiceImpl implements CategoryService {
 		if(categoryDao.findById(code)!=null)
 			return true;
 		return false;
+	}
+	@Override
+	public List<Category> findAllRootCategories()
+	{
+		return categoryDao.findAllRoot();
 	}
 
 }
