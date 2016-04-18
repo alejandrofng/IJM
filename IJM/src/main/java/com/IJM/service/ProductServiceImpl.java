@@ -34,13 +34,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product findProductDtoByCode(String code) {
+	public Product findProductByCode(String code) {
 		Product product = productDAO.findByCode(code);
 		return product;
 	}
 
 	@Override
-	public List<Product> findAllProductsDto() {
+	public List<Product> findAllProducts() {
 		List<Product> products = productDAO.findAll();
 		return products;
 	}

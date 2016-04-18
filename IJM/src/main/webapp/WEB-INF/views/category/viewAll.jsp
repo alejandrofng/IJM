@@ -21,6 +21,7 @@
         <td><form action="category/delete/${category.id}" method="post"><input type="submit" class="button" value="Borrar"/></form></td>
     </tr>
 </c:forEach>
+<tr><td><form action="category/insert"><input type="submit" class="button" value="Agregar Nueva Categoria"/></form></td></tr>
 </table>
 </body>
 </html>

@@ -12,9 +12,9 @@ public interface ProductService {
 	
 	public void deleteProduct(String code);
 	
-	public Product findProductDtoByCode(String code);
+	public Product findProductByCode(String code);
 
-	public List<Product> findAllProductsDto();
+	public List<Product> findAllProducts();
 
 	public boolean isProductExist(String code);
 		

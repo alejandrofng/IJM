@@ -13,74 +13,70 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.IJM.model.Category;
-import com.IJM.service.CategoryService;
+import com.IJM.model.Unit;
+import com.IJM.service.UnitService;
 
 
 @Controller
-@RequestMapping("/category")
-public class CategoryController {
+@RequestMapping("/unit")
+public class UnitController {
 
 	@Autowired
-	CategoryService categoryService;
+	UnitService unitService;
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView viewAll()
 	{
-		List<Category> categories = categoryService.findAllCategories();
-		ModelAndView model = new ModelAndView("/category/viewAll");
-		model.addObject("categories",categories);
+		List<Unit> units = unitService.findAllUnits();
+		ModelAndView model = new ModelAndView("/unit/viewAll");
+		model.addObject("units",units);
 		return model;
 	}
 	
 	@RequestMapping(value="/insert",method=RequestMethod.GET)
 	public ModelAndView insert()
 	{
-		List<Category> categories = categoryService.findAllRootCategories();
-		ModelAndView model = new ModelAndView("/category/insert");
-		model.addObject("categories",categories);
+		ModelAndView model = new ModelAndView("/unit/insert");
 		return model;
 	}
 	@RequestMapping(value="/insert",method=RequestMethod.POST)
-	public ModelAndView processInsertion(@Valid @ModelAttribute("category") Category category, BindingResult result )
+	public ModelAndView processInsertion(@Valid @ModelAttribute("unit") Unit unit, BindingResult result )
 	{
 		if(result.hasErrors())
 		{
-			ModelAndView model = new ModelAndView("/category/insert");
+			ModelAndView model = new ModelAndView("/unit/insert");
 			model.addObject("message","Un error ha ocurrido");
 			return model;
 		}
-		categoryService.saveCategory(category);
+		unitService.saveUnit(unit);
 		return viewAll();
 	}
 	@RequestMapping(value="/update/{id}",method=RequestMethod.GET)
 	public ModelAndView update(@PathVariable("id") long id )
 	{
-		ModelAndView model = new ModelAndView("/category/insert");
-		Category category = categoryService.findCategoryByCode(id);
-		List<Category> categories = categoryService.findAllRootCategories();
-		model.addObject("category",category);
-		model.addObject("categories",categories);
+		ModelAndView model = new ModelAndView("/unit/insert");
+		Unit unit = unitService.findUnitByCode(id);
+		model.addObject("unit",unit);
 		return model;
 	}
 	@RequestMapping(value="/update/{id}",method=RequestMethod.POST)
-	public ModelAndView processUpdate(@Valid @ModelAttribute("category") Category category, BindingResult result )
+	public ModelAndView processUpdate(@Valid @ModelAttribute("unit") Unit unit, BindingResult result )
 	{	
 		if(result.hasErrors())
 		{
-			ModelAndView model = new ModelAndView("/category/insert");
+			ModelAndView model = new ModelAndView("/unit/insert");
 			model.addObject("message","Un error ha ocurrido");
 			return model;
 		}
-		categoryService.updateCategory(category);
-		ModelAndView model = new ModelAndView("redirect:http://localhost:8090/IJM/category");
+		unitService.updateUnit(unit);
+		ModelAndView model = new ModelAndView("redirect:http://localhost:8090/IJM/unit");
 		return model;
 	}
 	@RequestMapping(value="/delete/{id}",method=RequestMethod.POST)
 	public ModelAndView delete(@PathVariable("id") long id )
 	{
-		categoryService.deleteCategory(id);
-		ModelAndView model = new ModelAndView("redirect:http://localhost:8090/IJM/category");
+		unitService.deleteUnit(id);
+		ModelAndView model = new ModelAndView("redirect:http://localhost:8090/IJM/unit");
 		return model;
 	}
 }
