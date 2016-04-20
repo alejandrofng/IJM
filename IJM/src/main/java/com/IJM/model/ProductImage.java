@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,11 +20,11 @@ public class ProductImage {
 	@Column(name="id", nullable = false)
 	private long id;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "Id_Product")
 	private Product product;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "Id_Image")
 	private Image image;
 

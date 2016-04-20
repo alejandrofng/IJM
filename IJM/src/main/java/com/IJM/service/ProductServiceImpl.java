@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.IJM.dao.ProductDao;
+import com.IJM.dao.ProductImageDao;
 import com.IJM.model.Product;
 
 @Transactional
@@ -17,10 +18,17 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductDao productDAO;
 
+	@Autowired
+	private ProductImageService productImageService;
+	
+	
 	@Override
 	public void saveProduct(Product product) {
+		//adding attributes to image
+		
 		productDAO.save(product);
 	}
+	
 
 	@Override
 	public void updateProduct(Product newProduct) {

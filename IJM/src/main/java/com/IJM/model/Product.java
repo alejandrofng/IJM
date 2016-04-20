@@ -1,5 +1,7 @@
 package com.IJM.model;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -31,8 +35,8 @@ public class Product {
 	@Column(name = "Name", nullable = false)
 	private String name;
 	
-	@Size(min = 5, max = 50)
-	@Column(name = "Description", nullable = false)
+	@Size(max = 50)
+	@Column(name = "Description")
 	private String description;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
@@ -42,6 +46,9 @@ public class Product {
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "Id_Unit")
 	private Unit unit;
+	
+	@OneToOne(mappedBy="product", cascade=CascadeType.ALL)
+	private ProductImage productImage;
 	
 	public String getCode() {
 		return code;
@@ -96,7 +103,13 @@ public class Product {
 		}
 		return;
 	}
-	
-	
-	
+
+	public ProductImage getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(ProductImage productImage) {
+		this.productImage = productImage;
+	}
+
 }

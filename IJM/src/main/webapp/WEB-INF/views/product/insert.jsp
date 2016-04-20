@@ -30,11 +30,12 @@
 	  		   	<label for="description">Descripcion</label>
 	   	<input id="description" type="text" name="description"/>
 	</c:if>
+	<input type="file" name="productImage.image.file" accept="image/*">
 	<select name="category.id">
     	<c:forEach items="${categories}" var="category">	    
 	        <option value="${category.id}"><c:out value="${category.name}"/></option>
 		</c:forEach>
-  </select>
+  	</select>
   	<select name="unit.id">
     	<c:forEach items="${units}" var="unit">	    
 	        <option value="${unit.id}"><c:out value="${unit.name}"/></option>

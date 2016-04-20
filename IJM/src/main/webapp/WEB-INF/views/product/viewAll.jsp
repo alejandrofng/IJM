@@ -11,10 +11,11 @@
 </h1>
 <table>
 <tr>
-	<td>Nombre</td><td>Categoria</td><td>Edicion</td><td>Borrado</td>
+	<td>Codigo</td><td>Nombre</td><td>Categoria</td><td>Edicion</td><td>Borrado</td>
 </tr>
 <c:forEach items="${products}" var="product">
     <tr>
+    	<td><c:out value="${product.code}"/></td>
         <td><c:out value="${product.name}"/></td>
         <td><c:out value="${product.category.name}"/></td>
         <td><form action="product/update/${product.code}"><input type="submit" class="button" value="Editar"/></form></td>

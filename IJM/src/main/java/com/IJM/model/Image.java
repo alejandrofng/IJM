@@ -1,6 +1,7 @@
 package com.IJM.model;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -44,6 +47,9 @@ public class Image {
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "Id_File_Type")
 	private FileType fileType;
+	
+	@OneToOne(mappedBy="image",cascade = CascadeType.MERGE)
+	private ProductImage productImages;
 	
 	public long getId() {
 		return id;
@@ -100,7 +106,20 @@ public class Image {
 	public void setLast_Updated(Timestamp last_Updated) {
 		this.last_Updated = last_Updated;
 	}
-	
-	
-	
+
+	public FileType getFileType() {
+		return fileType;
+	}
+
+	public void setFileType(FileType fileType) {
+		this.fileType = fileType;
+	}
+
+	public ProductImage getProductImages() {
+		return productImages;
+	}
+
+	public void setProductImages(ProductImage productImages) {
+		this.productImages = productImages;
+	}	
 }
