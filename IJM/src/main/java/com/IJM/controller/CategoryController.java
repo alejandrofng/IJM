@@ -27,9 +27,9 @@ public class CategoryController {
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView viewAll()
 	{
-		List<Category> categories = categoryService.findAllCategories();
-		ModelAndView model = new ModelAndView("/category/viewAll");
-		model.addObject("categories",categories);
+		//List<Category> categories = categoryService.findAllCategories();
+		ModelAndView model = new ModelAndView("/category/viewCategorias");
+		//model.addObject("categories",categories);
 		return model;
 	}
 	

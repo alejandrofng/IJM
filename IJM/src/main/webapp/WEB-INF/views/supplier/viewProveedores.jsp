@@ -1,6 +1,6 @@
 <%-- 
-    Document   : viewGestionarCategorias
-    Created on : 26/04/2016, 09:09:35 PM
+    Document   : viewGestionarProveedores
+    Created on : 26/04/2016, 09:11:04 PM
     Author     : juan
 --%>
 
@@ -15,7 +15,7 @@
         <script type="text/JavaScript" src="resources/js/lib/bootstrap.js"></script>
         <script type="text/JavaScript" src="resources/js/lib/bootbox.js"></script>
         <script type="text/JavaScript" src="resources/js/controladores/general.js?v=1"></script>
-        <script type="text/JavaScript" src="resources/js/controladores/categorias.js?v=1"></script>
+        <script type="text/JavaScript" src="resources/js/controladores/proveedores.js?v=1.1"></script>
         <link href="resources/css/lib/bootstrap.min.css" rel="stylesheet">
         <link href="resources/css/estilos/general.css?v=1" rel="stylesheet">
     </head>
@@ -26,12 +26,12 @@
                 <div class='panel panel-default'>
 
                     <div class='panel-heading'>
-                        Categorias
+                        Proveedores
                     </div>
                     <div class='panel-body'>
-                        <!--AQUI LA TABLA DE CATEGORIAS-->
                         <div class="div-tab-categorias table-responsive">
-                            <%@include file="listCategorias.jsp" %>
+                            <!--AQUI LA TABLA DE PROVEEDORES-->
+                            <%@include file="listProveedores.jsp" %>
                         </div>
 
                     </div>
@@ -42,16 +42,16 @@
 
         </div>
         <!--modal-->
-        <!--AQUI EL MODAL CON EL FORMULARIO DE CATEGORIAS-->
-        <div class="modal fade" id="modal-categorias" tabindex="-1" role="dialog" aria-labelledby="modalCategoriasLabel" aria-hidden="true">
+        <!--MODAL CON FORMULARIO DE PROVEEDORES-->
+        <div class="modal fade" id="modal-proveedores" tabindex="-1" role="dialog" aria-labelledby="modalProveedoresLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="modalCategoriasLabel">Categoria</h4>
+                        <h4 class="modal-title" id="modalProveedoresLabel">Categoria</h4>
                     </div>
                     <div class="modal-body">
-                        <%@include file="formCategorias.jsp" %>
+                        <%@include file="formProveedores.jsp" %>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id='bProcesarCategoria' class="btn btn-primary">Guardar</button>

@@ -28,8 +28,8 @@
     <tr id='tr-categoria-id'>
 
         <td class='td-nombre-categoria'><%=categoria%></td>
-        <td class='td-accion' width='50' ><img src='../img/Editar.png' class='btn editar-categoria img-editar'></td>
-        <td class='td-accion' width='50'><img src='../img/Eliminar.png' class='btn eliminar-categoria img-eliminar' ></td>
+        <td class='td-accion' width='50' ><img src='resources/img/Editar.png' class='btn editar-categoria img-editar'></td>
+        <td class='td-accion' width='50'><img src='resources/img/Eliminar.png' class='btn eliminar-categoria img-eliminar' ></td>
     </tr>
     <%
         }
@@ -41,7 +41,7 @@
 
 <tfoot>
     <tr>
-        <td colspan="3" class="text-center"><button id='btn-agregar-categoria' class='btn btn-default'><img src='../img/Add.png' >Agregar</button></td>
+        <td colspan="3" class="text-center"><button id='btn-agregar-categoria' class='btn btn-default'><img src='resources/img/Add.png' >Agregar</button></td>
     </tr>
 </tfoot>
 </table>

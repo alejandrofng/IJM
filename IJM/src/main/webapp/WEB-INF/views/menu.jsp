@@ -18,15 +18,15 @@ Menu principal este archivo se importara en todas las views
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" style="margin: 1px; padding: 1px; height: 60px;" href="#"><img src="../img/Logo.png" height="60"></a>
+            <a class="navbar-brand" style="margin: 1px; padding: 1px; height: 60px;" href="#"><img src="resources/img/Logo.png" height="60"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a class='a-menu-principal' href="viewCategorias.jsp">Gestionar Categorias</a></li>
-                <li><a class='a-menu-principal' href="viewProductos.jsp">Gestionar Productos</a></li>
-                <li><a class='a-menu-principal' href="viewProveedores.jsp">Gestionar Proveedores</a></li>
+                <li class="active"><a class='a-menu-principal' href="category">Gestionar Categorias</a></li>
+                <li><a class='a-menu-principal' href="product">Gestionar Productos</a></li>
+                <li><a class='a-menu-principal' href="supplier">Gestionar Proveedores</a></li>
                 <!--                <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
