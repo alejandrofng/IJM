@@ -4,47 +4,34 @@
     Author     : juan
 --%>
 
-
-<%@page import="java.util.Arrays"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="java.util.ArrayList"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <table id='tabla-productos' class='table table-hover table-condensed table-striped table-bordered'>
     <thead>
 
+    <th  >Codig</th>
     <th  >Nombre</th>
-    <th  >Descripcion</th>
     <th  >Categoria</th>
     <th  >Precio</th>
     <th  >Imagen</th>
     <th  colspan='2' >Acciones</th>
 </thead>
 <tbody>
-    <%
 
-//            Aqui va el arraylist correspondiente con los objetos de tipo Producto ArrayList<Producto>
-        ArrayList<String> productos = new ArrayList<String>(Arrays.asList("Pro1", "pro2", "pro3"));
-
-    %>
-
-    <%    for (String producto : productos) {%>
+    <c:forEach items="${products}" var="product">
     <tr id='tr-categoria-id'>
 
-        <td class='td-nombre-producto'><%=producto%></td>
-        <td class='td-descripcion-producto'><%=producto%></td>
-        <td class='td-categoria-producto'><%=producto%></td>
-        <td class='td-precio-producto'><%=producto%></td>
+        <td class='td-nombre-producto'>${product.code}</td>
+        <td class='td-descripcion-producto'>${product.name}</td>
+        <td class='td-categoria-producto'>${product.category.name}</td>
+        <td class='td-precio-producto'>aun no agregado</td>
         <!--AQUI EL URL DE LA IMAGEN DEL PRODUCTO-->
         <td class='td-imagen-producto'><img height="80" src="resources/img/mprod.jpg"> </td>
         <td class='td-accion' width='50' ><img src='resources/img/Editar.png' class='btn editar-producto img-editar'></td>
         <td class='td-accion' width='50'><img src='resources/img/Eliminar.png' class='btn eliminar-producto img-eliminar' ></td>
     </tr>
-    <%
-        }
-
-    %>
-
+	</c:forEach>
 
 </tbody>
 

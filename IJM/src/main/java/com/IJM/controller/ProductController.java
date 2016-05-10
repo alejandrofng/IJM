@@ -35,9 +35,9 @@ public class ProductController {
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView viewAll()
 	{
-		//List<Product> products = productService.findAllProducts();
-		ModelAndView model = new ModelAndView("/product/viewProductos");
-		//model.addObject("products",products);
+		List<Product> products = productService.findAllProducts();
+		ModelAndView model = new ModelAndView("/product/view");
+		model.addObject("products",products);
 		return model;
 	}
 	
