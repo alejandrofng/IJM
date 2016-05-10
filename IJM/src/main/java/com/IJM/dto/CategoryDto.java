@@ -2,11 +2,11 @@ package com.IJM.dto;
 
 public class CategoryDto {
 
-	private long code;
+	private Long id;
 	
 	private String name;
 	
-	private CategoryDto parent;
+	private Long parent_id;
 	
 	public String getName() {
 		return name;
@@ -16,20 +16,20 @@ public class CategoryDto {
 		this.name = name;
 	}
 
-	public long getCode() {
-		return code;
+	public Long getId() {
+		return id;
 	}
 
-	public void setCode(long code) {
-		this.code = code;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public CategoryDto getParent() {
-		return parent;
+	public Long getParent_id() {
+		return parent_id;
 	}
 
-	public void setParent(CategoryDto parent) {
-		this.parent = parent;
+	public void setParent_id(long parent_id) {
+		this.parent_id = parent_id;
 	}
 	
 }

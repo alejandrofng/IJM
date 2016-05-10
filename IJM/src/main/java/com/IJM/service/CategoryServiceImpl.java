@@ -26,7 +26,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public void updateCategory(CategoryDto categoryDto) {
-		Category category = categoryDao.findById(categoryDto.getCode());
+		Category category = categoryDao.findById(categoryDto.getId());
 		category.setName(categoryDto.getName());
 		categoryDao.update(category);
 	}
