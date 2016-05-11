@@ -29,7 +29,7 @@ public class ProductDaoImpl extends AbstractDao<Integer, Product> implements Pro
 	@Override
 	public List<Product> findAll() {
 		Criteria criteria = createEntityCriteria();
-		System.out.print(criteria.list());
+		//System.out.print(criteria.list());
 		return (List<Product>) criteria.list();
 	}
 

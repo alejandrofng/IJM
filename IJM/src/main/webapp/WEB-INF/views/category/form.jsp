@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div id='div-datos-categoria' class='well'  >
-    
+    <form id="form-categoria" action="/IJM/category/insert" method="POST">
         <div class='row form-group'>
             <div class='col-md-4'><label for='tbNombreCategoria' class='control-label'>Nombre</label></div>
             <div class='col-md-8'>
@@ -21,5 +21,5 @@
 			 	</select>
             </div>
         </div>
-
+	</form>
 </div>

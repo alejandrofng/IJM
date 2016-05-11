@@ -6,9 +6,15 @@
 
 
 $(document).ready(function () {
+	$('#bGuardar').click(function() {
 
+	    location.reload();
+
+	});
 
 });
+
+
 
 function limpiarFormulario(formulario) {
     formulario.find('input').each(function () {

@@ -67,5 +67,10 @@ public class CategoryServiceImpl implements CategoryService {
 			return true;
 		return false;
 	}
+	@Override
+	public List<Category> findAllCategories() {
+		List<Category> categories = categoryDao.findAll();
+		return categories;
+	}
 
 }

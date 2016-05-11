@@ -66,4 +66,9 @@ public class ProductServiceImpl implements ProductService {
 		return (productDAO.findByCode(code)!=null);
 	}
 
+	@Override
+	public List<Product> findAllProducts() {
+		List<Product> products = productDAO.findAll();
+		return products;
+	}
 }

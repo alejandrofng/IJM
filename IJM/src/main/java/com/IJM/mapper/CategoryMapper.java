@@ -27,7 +27,7 @@ public class CategoryMapper {
 		{
 			//category.setParent(DtoToEntity(categoryDto.getParent()));
 			Category parent = new Category();
-			parent.setId((categoryDto.getId()));
+			parent.setId((categoryDto.getParent_id()));
 			category.setParent(parent);
 		}
 		return category;

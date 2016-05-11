@@ -3,6 +3,7 @@ package com.IJM.service;
 import java.util.List;
 
 import com.IJM.dto.ProductDto;
+import com.IJM.model.Product;
 
 public interface ProductService {
 
@@ -17,5 +18,7 @@ public interface ProductService {
 	public List<ProductDto> findAllProductsDto();
 
 	public boolean isProductExist(String code);
+
+	public List<Product> findAllProducts();
 		
 }

@@ -51,15 +51,14 @@
                         <h4 class="modal-title" id="modalCategoriasLabel">Categoria</h4>
                     </div>
                     <div class="modal-body">
-                    <form id="form-categoria" action="/IJM/category/insert" method="POST">
+                    
                         <%@include file="form.jsp" %>
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" class="btn btn-primary" value="Guardar">
+                        <button type="button" id='bGuardar' class="btn btn-primary">Guardar</button>
                         <button type="button" id='bCancelar' class="btn btn-default" data-dismiss="modal">Cancelar</button>
 						
                     </div>
-                    </form>
                 </div>
             </div>
         </div>

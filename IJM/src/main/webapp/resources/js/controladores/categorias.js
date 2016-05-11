@@ -11,8 +11,16 @@ $(document).ready(function () {
 
     });
     $("#btn-guardar-categoria").click(function () {
+    	var nombre;
+    	var parent_id;
+    	
+    	nombre = $("#tbNombreCategoria").val();
+    	if($("#sCategoriaPadre").val()!="" && $("#sCategoriaPadre").val()!="0")
+    		parent_id = $("#sCategoriaPadre").val();
+    	else parent_id=null;
+    	
     	try{
-    		$.post('category/insert',{'name':$("#tbNombreCategoria").val(),'parent.id':$("#sCategoriaPadre").val()});
+    		$.post('category/insert',{'name':nombre,'parent.id':parent_id});
     		}catch(e)
     		{
     			console.log(e);

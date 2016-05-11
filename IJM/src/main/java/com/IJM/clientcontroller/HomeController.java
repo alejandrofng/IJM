@@ -13,7 +13,8 @@ public class HomeController {
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public ModelAndView viewAll()
 	{
-		ModelAndView model = new ModelAndView("menu");
+		ModelAndView model = new ModelAndView("home");
 		return model;
 	}
+
 }
