@@ -15,7 +15,7 @@ public class ProductMapper {
 		productDto.setDescription(product.getDescription());
 		productDto.setName(product.getName());
 		if(product.getCategory()!=null)
-			productDto.setCategoryDto(CategoryMapper.EntityToDto(product.getCategory()));
+			productDto.setCategory(CategoryMapper.EntityToDto(product.getCategory()));
 		if(product.getUnit()!=null)
 			productDto.setUnitDto(UnitMapper.EntityToDto(product.getUnit()));
 		return productDto;
@@ -26,8 +26,8 @@ public class ProductMapper {
 		product.setCode(productDto.getCode());
 		product.setDescription(productDto.getDescription());
 		product.setName(productDto.getName());
-		if(productDto.getCategoryDto()!=null)
-			product.setCategory(CategoryMapper.DtoToEntity(productDto.getCategoryDto()));
+		if(productDto.getCategory()!=null)
+			product.setCategory(CategoryMapper.DtoToEntity(productDto.getCategory()));
 		if(productDto.getUnitDto()!=null)
 			product.setUnit(UnitMapper.DtoToEntity(productDto.getUnitDto()));
 		return product;
@@ -36,8 +36,8 @@ public class ProductMapper {
 		product.setCode(productDto.getCode());
 		product.setDescription(productDto.getDescription());
 		product.setName(productDto.getName());
-		if(productDto.getCategoryDto()!=null)
-			product.setCategory(CategoryMapper.DtoToEntity(productDto.getCategoryDto()));
+		if(productDto.getCategory()!=null)
+			product.setCategory(CategoryMapper.DtoToEntity(productDto.getCategory()));
 		if(productDto.getUnitDto()!=null)
 			product.setUnit(UnitMapper.DtoToEntity(productDto.getUnitDto()));
 	}

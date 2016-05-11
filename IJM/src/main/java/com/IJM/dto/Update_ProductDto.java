@@ -1,7 +1,8 @@
 package com.IJM.dto;
 
+import java.util.Set;
 
-public class ProductDto {
+public class Update_ProductDto {
 	
 	private String code;
 	
@@ -9,7 +10,9 @@ public class ProductDto {
 	
 	private String description;
 	
-	private CategoryDto category;
+	private Set<CategoryDto> categories;
+	
+	private Set<String> imageUrl;
 	
 	private UnitDto unitDto;
 	
@@ -36,14 +39,6 @@ public class ProductDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public CategoryDto getCategory() {
-		return category;
-	}
-	
-	public void setCategory(CategoryDto categoryDto) {
-		this.category = categoryDto;
-	}
 
 	public UnitDto getUnitDto() {
 		return unitDto;
@@ -52,5 +47,22 @@ public class ProductDto {
 	public void setUnitDto(UnitDto unitDto) {
 		this.unitDto = unitDto;
 	}
-		
+
+	public Set<CategoryDto> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(Set<CategoryDto> categories) {
+		this.categories = categories;
+	}
+
+	public Set<String> getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(Set<String> imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	
+	
 }
