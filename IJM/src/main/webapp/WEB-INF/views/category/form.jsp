@@ -19,6 +19,7 @@
 				        <option value="${category.id}"><c:out value="${category.name}"/></option>
 					</c:forEach>
 			 	</select>
+			 	<label id="lbErrorForm"></label>
             </div>
         </div>
 	</form>

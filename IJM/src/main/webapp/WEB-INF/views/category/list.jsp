@@ -18,7 +18,7 @@
 <tbody>
 
     <c:forEach items="${categories}" var="category">
-    <tr id='tr-categoria-id'>
+    <tr id='tr-categoria-id' data-id="${category.id}">
 
         <td class='td-nombre-categoria'>${category.name}</td>
         <td><c:out value="${category.parent.name}"/></td>

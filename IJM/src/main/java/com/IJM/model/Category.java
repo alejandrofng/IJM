@@ -34,10 +34,6 @@ public class Category {
     @JoinColumn(name="Id_Parent")
 	private Category parent;
 	
-	@OneToMany(fetch = FetchType.LAZY) 
-	@JoinColumn(name = "parent")
-	private Set<Category> children;
-
 	public long getId() {
 
 		return id;
@@ -62,14 +58,5 @@ public class Category {
 	public void setParent(Category parent) {
 		this.parent = parent;
 	}
-
-	public Set<Category> getChildren() {
-		return children;
-	}
-
-	public void setChildren(Set<Category> children) {
-		this.children = children;
-	}
-	
 	
 }

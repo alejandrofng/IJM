@@ -2,7 +2,9 @@ package com.IJM.dao;
 
 import java.util.List;
 
+
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -25,7 +27,7 @@ public class CategoryDaoImpl extends AbstractDao<Long, Category> implements Cate
 	@Override
 	public List<Category> findAll() {
 		Criteria criteria = createEntityCriteria();
-		System.out.print(criteria.list());
+		criteria.addOrder(Order.asc("id"));
 		return (List<Category>) criteria.list();
 	}
 

@@ -28,6 +28,13 @@ public class CategoryServiceImpl implements CategoryService {
 	public void updateCategory(CategoryDto categoryDto) {
 		Category category = categoryDao.findById(categoryDto.getId());
 		category.setName(categoryDto.getName());
+		if(categoryDto.getId_parent()!=null&&isCategoryExists(categoryDto.getId_parent()))
+		{
+			Category parent = new Category();
+			parent.setId(categoryDto.getId_parent());
+			category.setParent(parent);
+		}
+		else category.setParent(null);
 		categoryDao.update(category);
 	}
 

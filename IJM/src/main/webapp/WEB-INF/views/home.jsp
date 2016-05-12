@@ -11,7 +11,7 @@
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type="text/JavaScript" src="resources/js/lib/jquery-1.9.1.js"></script>
+        <script type="text/JavaScript" src=resources/js/lib/jquery-2.1.1.min.js></script>
         <script type="text/JavaScript" src="resources/js/lib/bootstrap.js"></script>
         <script type="text/JavaScript" src="resources/js/lib/bootbox.js"></script>
         <script type="text/JavaScript" src="resources/js/controladores/general.js?v=1"></script>

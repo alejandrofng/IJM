@@ -20,7 +20,7 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 
-	// create a Product
+	// create a category
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> createCategory(@RequestBody CategoryDto categoryDto) {
 		if (categoryService.isCategoryNameAlreadyExists(categoryDto)) {
@@ -34,15 +34,19 @@ public class CategoryController {
 	}
 
 	@RequestMapping(value = "/{code}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> updateCategory(@PathVariable("code") String code, @RequestBody CategoryDto categoryDto) {
+	public ResponseEntity<Void> updateCategory(@PathVariable("code") long code, @RequestBody CategoryDto categoryDto) {
 		System.out.println("Updating Category " + code);
 		HttpStatus status;
-		try {
-			categoryService.updateCategory(categoryDto);
-			status = HttpStatus.OK;
-		} catch (Exception e) {
-			status = HttpStatus.CONFLICT;
+		if(categoryService.isCategoryExists(code))
+		{
+			try {
+				categoryService.updateCategory(categoryDto);
+				status = HttpStatus.OK;
+			} catch (Exception e) {
+				status = HttpStatus.CONFLICT;
+			}
 		}
+		else status = HttpStatus.NO_CONTENT;
 		return new ResponseEntity<Void>(status);
 	}
 

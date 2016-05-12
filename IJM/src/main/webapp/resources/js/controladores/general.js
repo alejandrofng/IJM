@@ -6,11 +6,6 @@
 
 
 $(document).ready(function () {
-	$('#bGuardar').click(function() {
-
-	    location.reload();
-
-	});
 
 });
 
@@ -19,10 +14,19 @@ $(document).ready(function () {
 function limpiarFormulario(formulario) {
     formulario.find('input').each(function () {
         $(this).val('');
-
     });
     formulario.find('select').each(function () {
         $(this).val('');
-
     });
+    formulario.find("#lbErrorForm").each(function () {
+        $(this).val('');
+    });
+}
+function errorFormulario(msg){
+        $("#lbErrorForm").text(msg);
+}
+function reloadPage()
+{
+    var loc = window.location;
+    window.location = loc.protocol + '//' + loc.host + loc.pathname + loc.search;
 }

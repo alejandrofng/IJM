@@ -6,7 +6,7 @@ public class CategoryDto {
 	
 	private String name;
 	
-	private Long parent_id;
+	private Long id_parent;
 	
 	public String getName() {
 		return name;
@@ -24,12 +24,12 @@ public class CategoryDto {
 		this.id = id;
 	}
 
-	public Long getParent_id() {
-		return parent_id;
+	public Long getId_parent() {
+		return id_parent;
 	}
 
-	public void setParent_id(long parent_id) {
-		this.parent_id = parent_id;
+	public void setId_parent(long id_parent) {
+		this.id_parent = id_parent;
 	}
 	
 }
