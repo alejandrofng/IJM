@@ -49,7 +49,15 @@ public class ProductServiceImpl implements ProductService {
 		}
 		else return null;
 	}
-
+	@Override
+	public ProductDto findProductDto(Long id) {
+		Product product = productDAO.findById(id);
+		if(product!=null)
+		{
+			return ProductMapper.EntityToDto(product);
+		}
+		else return null;
+	}
 	@Override
 	public List<ProductDto> findAllProductsDto() {
 		List<Product> products = productDAO.findAll();

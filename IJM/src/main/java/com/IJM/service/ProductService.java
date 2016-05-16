@@ -20,5 +20,7 @@ public interface ProductService {
 	public boolean isProductExist(String code);
 
 	public List<Product> findAllProducts();
+	
+	public ProductDto findProductDto(Long id);
 		
 }

@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 import com.IJM.model.Product;
 
 @Repository("productDao")
-public class ProductDaoImpl extends AbstractDao<Integer, Product> implements ProductDao {
+public class ProductDaoImpl extends AbstractDao<Long, Product> implements ProductDao {
 
 	@Override
-	public Product findById(int id) {
+	public Product findById(Long id) {
 		return getByKey(id);
 	}
 

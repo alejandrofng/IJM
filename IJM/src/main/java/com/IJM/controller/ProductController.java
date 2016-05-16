@@ -58,10 +58,11 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
-	public ResponseEntity<ProductDto> getProduct(@PathVariable("code") String code) {
+	public ResponseEntity<ProductDto> getProduct(@PathVariable("code") Long code) {
 		System.out.println("Fetching Product with code " + code);
 
-		ProductDto productDto = productService.findProductDtoByCode(code);
+		//ProductDto productDto = productService.findProductDtoByCode(code);
+		ProductDto productDto = productService.findProductDto(code);
 		if (productDto == null) {
 			System.out.println("Product with code " + code + " not found");
 			return new ResponseEntity<ProductDto>(HttpStatus.NOT_FOUND);
