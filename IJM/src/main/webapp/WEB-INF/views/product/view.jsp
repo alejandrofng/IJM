@@ -34,7 +34,7 @@
                         <div class="div-tab-productos table-responsive">
                             <%@include file="list.jsp" %>
                         </div>
-
+					<div class="text-center"><button id='btn-agregar-producto' class='btn btn-default'><img src='resources/img/Add.png' >Agregar</button></div>
                     </div>
 
                 </div>
@@ -55,9 +55,8 @@
                         <%@include file="form.jsp" %>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id='bProcesarProducto' class="btn btn-primary">Guardar</button>
+                        <button type="button" id='btn-guardar-producto' class="btn btn-primary">Guardar</button>
                         <button type="button" id='bCancelar' class="btn btn-default" data-dismiss="modal">Cancelar</button>
-
                     </div>
                 </div>
             </div>

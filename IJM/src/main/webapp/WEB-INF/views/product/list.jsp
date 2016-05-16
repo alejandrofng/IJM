@@ -20,7 +20,7 @@
 <tbody>
 
     <c:forEach items="${products}" var="product">
-    <tr id='tr-categoria-id'>
+    <tr id='tr-producto-id' data-id="${product.id}">
 
         <td class='td-nombre-producto'>${product.code}</td>
         <td class='td-descripcion-producto'>${product.name}</td>
@@ -37,7 +37,7 @@
 
 <tfoot>
     <tr>
-        <td colspan="7" class="text-center"><button id='btn-agregar-producto' class='btn btn-default'><img src='resources/img/Add.png' >Agregar</button></td>
+        
     </tr>
 </tfoot>
 </table>

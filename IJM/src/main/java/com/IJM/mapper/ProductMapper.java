@@ -17,7 +17,7 @@ public class ProductMapper {
 		if(product.getCategory()!=null)
 			productDto.setCategory(CategoryMapper.EntityToDto(product.getCategory()));
 		if(product.getUnit()!=null)
-			productDto.setUnitDto(UnitMapper.EntityToDto(product.getUnit()));
+			productDto.setUnit(UnitMapper.EntityToDto(product.getUnit()));
 		return productDto;
 	}
 
@@ -28,8 +28,8 @@ public class ProductMapper {
 		product.setName(productDto.getName());
 		if(productDto.getCategory()!=null)
 			product.setCategory(CategoryMapper.DtoToEntity(productDto.getCategory()));
-		if(productDto.getUnitDto()!=null)
-			product.setUnit(UnitMapper.DtoToEntity(productDto.getUnitDto()));
+		if(productDto.getUnit()!=null)
+			product.setUnit(UnitMapper.DtoToEntity(productDto.getUnit()));
 		return product;
 	}
 	public static void DtoToEntity(ProductDto productDto,Product product) {//Map an existent Entity to update
@@ -38,8 +38,8 @@ public class ProductMapper {
 		product.setName(productDto.getName());
 		if(productDto.getCategory()!=null)
 			product.setCategory(CategoryMapper.DtoToEntity(productDto.getCategory()));
-		if(productDto.getUnitDto()!=null)
-			product.setUnit(UnitMapper.DtoToEntity(productDto.getUnitDto()));
+		if(productDto.getUnit()!=null)
+			product.setUnit(UnitMapper.DtoToEntity(productDto.getUnit()));
 	}
 	public Set<ProductDto> EntitySetToDtoSet(Set<Product> products) {
 		Set<ProductDto> productsDto = new HashSet<ProductDto>();

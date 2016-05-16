@@ -11,7 +11,9 @@ public class ProductDto {
 	
 	private CategoryDto category;
 	
-	private UnitDto unitDto;
+	private UnitDto unit;
+	
+	private String price;
 	
 	public String getCode() {
 		return code;
@@ -45,12 +47,20 @@ public class ProductDto {
 		this.category = categoryDto;
 	}
 
-	public UnitDto getUnitDto() {
-		return unitDto;
+	public UnitDto getUnit() {
+		return unit;
 	}
 
-	public void setUnitDto(UnitDto unitDto) {
-		this.unitDto = unitDto;
+	public void setUnit(UnitDto unit) {
+		this.unit = unit;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
 	}
 		
 }
