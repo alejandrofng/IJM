@@ -37,7 +37,7 @@ public class CategoryController {
 	public ResponseEntity<Void> updateCategory(@PathVariable("code") long code, @RequestBody CategoryDto categoryDto) {
 		System.out.println("Updating Category " + code);
 		HttpStatus status;
-		if(categoryService.isCategoryExists(code))
+		if(categoryService.isCategoryExists(code) && !categoryService.isCategoryNameAlreadyExists(categoryDto))
 		{
 			try {
 				categoryService.updateCategory(categoryDto);

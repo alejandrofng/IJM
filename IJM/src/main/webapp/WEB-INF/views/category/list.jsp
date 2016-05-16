@@ -26,13 +26,11 @@
         <td class='td-accion' width='50'><img src='resources/img/Eliminar.png' class='btn eliminar-categoria img-eliminar' ></td>
     </tr>
 	</c:forEach>
-
-
 </tbody>
 
 <tfoot>
     <tr>
-        <td colspan="3" class="text-center"><button id='btn-agregar-categoria' class='btn btn-default'><img src='resources/img/Add.png' >Agregar</button></td>
-    </tr>
+            </tr>
 </tfoot>
 </table>
+

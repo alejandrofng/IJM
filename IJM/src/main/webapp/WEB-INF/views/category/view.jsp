@@ -33,7 +33,9 @@
                         <div class="div-tab-categorias table-responsive">
                             <%@include file="list.jsp" %>
                         </div>
-
+						<div>
+							<div colspan="3" class="text-center"><button id='btn-agregar-categoria' class='btn btn-default'><img src='resources/img/Add.png' >Agregar</button></div>		
+						</div>
                     </div>
 
                 </div>
@@ -47,7 +49,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <button id="btn-cerrar-formulario" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="modalCategoriasLabel">Categoria</h4>
                     </div>
                     <div class="modal-body">

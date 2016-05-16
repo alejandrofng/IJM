@@ -26,7 +26,7 @@ public class Category {
 	private long id;
 
 	@NotNull
-	@Size(min = 5, max = 50)
+	@Size( max = 50)
 	@Column(name = "Name", nullable = false)
 	private String name;
 

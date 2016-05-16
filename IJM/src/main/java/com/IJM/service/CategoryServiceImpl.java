@@ -62,10 +62,12 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public boolean isCategoryNameAlreadyExists(CategoryDto categoryDto) {
-		
-		if(categoryDao.findByName(categoryDto.getName())!=null)
+		Category aux = categoryDao.findByName(categoryDto.getName());
+		if(aux.getParent()==null && categoryDto.getId_parent()==null)
 			return true;
-		return false;
+		else if(aux.getParent()!=null && aux.getParent().getId()==categoryDto.getId_parent())
+			return true;
+		else return false;
 	}
 
 	@Override
