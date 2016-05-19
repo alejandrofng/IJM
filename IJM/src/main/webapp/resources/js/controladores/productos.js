@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 var id_producto;
+var imagen;
 function reloadPage()
 {
 	id_producto=null;
@@ -147,6 +148,21 @@ $(document).ready(function () {
                     if (up.files.length === maxfiles) {
                         $('#uploader_browse').hide("slow"); // provided there is only one #uploader_browse on page
                     }
+                    
+                    try{
+                    	var file = files[0].getNative();
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            // use result in callback...
+                        	imagen = Base64.encode(e.target.result);
+                            console.log(e.target.result);
+                            console.log(imagen);
+                        };
+                        reader.readAsText(file);
+                        console.log(reader.result);
+                    } catch(e) {
+                        console.log(e.message);
+                    }
 	            },
 	            
 	            FilesRemoved: function(up, files) {
@@ -198,7 +214,7 @@ $(document).ready(function () {
 	    			"price":$("#tbPrecioProducto").val(),"category":categoria,
 	    			"unit":null,"code":$("#tbCodigoProducto").val(),
 	    			"name":$("#tbNombreProducto").val(),"image":image};
-	    	
+	    	var archivos = $("#uploader").pluploadQueue().Files;
 				
 	    	if(esEdicionDeProducto())
     		{	  

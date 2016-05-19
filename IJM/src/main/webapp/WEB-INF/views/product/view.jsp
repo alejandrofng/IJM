@@ -15,6 +15,7 @@
         <script type="text/JavaScript" src="resources/js/lib/bootstrap.js"></script>
         <script type="text/JavaScript" src="resources/js/lib/bootbox.js"></script>
         <script type="text/JavaScript" src="resources/js/lib/bootstrap-filestyle.js"></script>
+        <script type="text/JavaScript" src="resources/js/lib/Base64.js"></script>
         <script type="text/JavaScript" src="resources/js/lib/plupload.full.min.js"></script>
         <script type="text/JavaScript" src="resources/js/lib/jquery.plupload.queue/jquery.plupload.queue.js"></script>
         <script type="text/JavaScript" src="resources/js/controladores/general.js?v=1"></script>
