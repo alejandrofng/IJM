@@ -15,6 +15,8 @@ public class ProductDto {
 	
 	private String price;
 	
+	private String image;
+	
 	public String getCode() {
 		return code;
 	}
@@ -61,6 +63,14 @@ public class ProductDto {
 
 	public void setPrice(String price) {
 		this.price = price;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 		
 }
