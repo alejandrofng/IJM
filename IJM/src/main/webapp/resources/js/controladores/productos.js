@@ -35,6 +35,7 @@ function cargarProductoEnFormulario(data)
 	$("#tbCodigoProducto").val(data['code']);
 	$("#tbDescripcionProducto").val(data['description']);
 	$("#sCategoria").val(data['category']['id']);
+	$("#fileImagen").val(data['images']['0']['file_name']);
 }
 function obtenerProducto(id)
 {
@@ -67,7 +68,7 @@ function actualizarProducto(Producto)
 	    method:'PUT',
 	    data:JSON.stringify(Producto),
 	    contentType: "application/json; charset=utf-8",
-	    url:'product/'+Producto['id'],
+	    url:'product/'+Producto['code'],
 		}).done(function(data, textStatus, jqXHR) { 	
 	   		 window.location.href = "productos";	
 		}).fail(function(jqXHR, textStatus, errorThrown) {
@@ -75,15 +76,13 @@ function actualizarProducto(Producto)
 	    		errorFormulario("Ya existe un Producto con ese nombre!");
 	    	});
 }
-function borrarProducto(id)
+function borrarProducto(code)
 {
 	{
 		$.ajax({
 		    method:'DELETE',
-		    url:'product/'+id,
+		    url:'product/'+code,
 		    success: function (rest) {
-		    	console.log(rest);
-		    	console.log("delete");
 		    	window.location.href = "productos";
 		    },
 		    error: function(rest){
@@ -133,7 +132,7 @@ $(document).ready(function () {
     $(".editar-producto").click(function () {
         $('#modal-productos').modal('show');
         var parentTag = $( this ).closest("tr");
-        id_producto = parentTag.data('id');
+        id_producto = parentTag.data('code');
         obtenerProducto(id_producto);	
     });
     
@@ -158,11 +157,11 @@ $(document).ready(function () {
     	{
 	    	var categoria = {"id":$("#sCategoria").val()}	;
 	    	var imagenes = [{"id":null,"checksum":null,"file":imagen, "extension":control.files[0].type,"size":control.files[0].size,"file_name":control.files[0].name}];
-	    	var producto = {"id":id_producto,"description":$("#tbDescripcionProducto").val(),
+	    	var producto = {"description":$("#tbDescripcionProducto").val(),
 	    			"price":$("#tbPrecioProducto").val(),"category":categoria,
-	    			"unit":null,"code":$("#tbCodigoProducto").val(),
+	    			"unit":null,"code":$("#tbCodigoProducto").val().toUpperCase(),
 	    			"name":$("#tbNombreProducto").val(),"images":imagenes};
-				
+			
 	    	if(esEdicionDeProducto())
     		{	  
 	    		actualizarProducto(producto);
@@ -172,9 +171,12 @@ $(document).ready(function () {
     	}
     });
     $(".eliminar-producto").click(function () {
+    	var parentTag = $( this ).closest("tr");
         bootbox.confirm("Esta seguro que desea eliminar este producto?", function (result) {
             if (result) {
-//                ok
+            	
+                id_producto = parentTag.data('code');
+        		borrarProducto(id_producto);
 
             } else {
 //                no

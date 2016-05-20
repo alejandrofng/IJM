@@ -2,6 +2,7 @@ package com.IJM.dao;
 
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -36,7 +37,7 @@ public class ProductDaoImpl extends AbstractDao<Long, Product> implements Produc
 	@Override
 	public Product findByCode(String code) {
 		Criteria criteria = getSession().createCriteria(Product.class);
-		criteria.add(Restrictions.eq("code",code));
+		criteria.add(Restrictions.ilike("code", code, MatchMode.ANYWHERE));
 		return (Product) criteria.uniqueResult();
 	}
 	public void update(Product product) {

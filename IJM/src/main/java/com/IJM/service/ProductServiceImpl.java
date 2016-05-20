@@ -79,4 +79,5 @@ public class ProductServiceImpl implements ProductService {
 		List<Product> products = productDAO.findAll();
 		return products;
 	}
+	
 }

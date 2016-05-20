@@ -48,7 +48,7 @@ public class Product {
 	@JoinColumn(name = "Id_Unit")
 	private Unit unit;
 	
-	@OneToMany(cascade = CascadeType.ALL,fetch= FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL,fetch= FetchType.LAZY)
 	@JoinTable(
 			name="product_image",
 			joinColumns = { @JoinColumn(name = "Id_Product") }, 

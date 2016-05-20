@@ -4,6 +4,8 @@ import java.util.Set;
 
 public class ProductDto {
 	
+	
+	
 	private String code;
 	
 	private String name;

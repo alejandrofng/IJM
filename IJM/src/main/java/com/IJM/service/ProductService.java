@@ -22,5 +22,5 @@ public interface ProductService {
 	public List<Product> findAllProducts();
 	
 	public ProductDto findProductDto(Long id);
-		
+
 }

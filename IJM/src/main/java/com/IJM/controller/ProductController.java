@@ -31,6 +31,7 @@ public class ProductController {
 		}
 
 		productService.saveProduct(productDto);
+		
 		System.out.println("A Product with name " + productDto.getName() + " has been added");
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
@@ -58,11 +59,11 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
-	public ResponseEntity<ProductDto> getProduct(@PathVariable("code") Long code) {
+	public ResponseEntity<ProductDto> getProduct(@PathVariable("code") String code) {
 		System.out.println("Fetching Product with code " + code);
 
 		//ProductDto productDto = productService.findProductDtoByCode(code);
-		ProductDto productDto = productService.findProductDto(code);
+		ProductDto productDto = productService.findProductDtoByCode(code);
 		if (productDto == null) {
 			System.out.println("Product with code " + code + " not found");
 			return new ResponseEntity<ProductDto>(HttpStatus.NOT_FOUND);
@@ -71,7 +72,7 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/{code}", method = RequestMethod.DELETE)
-	public ResponseEntity<ProductDto> deleteSupplier(@PathVariable("code") String code) {
+	public ResponseEntity<ProductDto> deleteProduct(@PathVariable("code") String code) {
 		System.out.println("Fetching & Deleting Product with id " + code);
 
 		

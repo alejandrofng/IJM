@@ -20,7 +20,7 @@
 <tbody>
 
     <c:forEach items="${products}" var="product">
-    <tr id='tr-producto-id' data-id="${product.id}">
+    <tr id='tr-producto-id' data-id="${product.id}" data-code="${product.code}">
 
         <td class='td-nombre-producto'>${product.code}</td>
         <td class='td-descripcion-producto'>${product.name}</td>
