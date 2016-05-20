@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -37,6 +38,9 @@ public class Image {
 	
 	@Column(name = "Last_Updated",nullable = false)
 	private Timestamp last_Updated;
+	
+	@ManyToOne
+	private Product product;
 	
 	public long getId() {
 		return id;

@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -47,7 +48,13 @@ public class Product {
 	@JoinColumn(name = "Id_Unit")
 	private Unit unit;
 	
-
+	@OneToMany(cascade = CascadeType.ALL,fetch= FetchType.EAGER)
+	@JoinTable(
+			name="product_image",
+			joinColumns = { @JoinColumn(name = "Id_Product") }, 
+            inverseJoinColumns = { @JoinColumn(name = "Id_Image") }
+			)
+	private Set<Image> images;
 	
 	public String getCode() {
 		return code;
@@ -101,6 +108,14 @@ public class Product {
 			this.unit=unit;
 		}
 		return;
+	}
+
+	public Set<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(Set<Image> images) {
+		this.images = images;
 	}
 
 
