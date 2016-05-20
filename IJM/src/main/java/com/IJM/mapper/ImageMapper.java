@@ -2,6 +2,8 @@ package com.IJM.mapper;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.IJM.dto.ImageDto;
 import com.IJM.model.Image;
@@ -39,5 +41,21 @@ public class ImageMapper {
 			e.printStackTrace();
 		}
 		return image;
+	}
+	public static Set<ImageDto> EntitySetToDtoSet(Set<Image> images) {
+		Set<ImageDto> imagesDto = new HashSet<ImageDto>();
+		for (Image image : images) {
+		    ImageDto imageDto = ImageMapper.EntityToDto(image);
+		    imagesDto.add(imageDto);
+		}
+		return imagesDto;
+	}
+	public static Set<Image> DtoSetToEntitySet(Set<ImageDto> imagesDto) {
+		Set<Image> images = new HashSet<Image>();
+		for (ImageDto imageDto : imagesDto) {
+			Image image = ImageMapper.DtoToEntity(imageDto);
+			images.add(image);
+		}
+		return images;
 	}
 }
