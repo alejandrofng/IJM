@@ -31,11 +31,11 @@ public class Product {
 	private String code;
 
 	@NotNull
-	@Size(min = 5, max = 50)
+	@Size(min = 3, max = 50)
 	@Column(name = "Name", nullable = false)
 	private String name;
 	
-	@Size(min = 5, max = 50)
+	@Size( max = 50)
 	@Column(name = "Description", nullable = false)
 	private String description;
 	
@@ -47,13 +47,7 @@ public class Product {
 	@JoinColumn(name = "Id_Unit")
 	private Unit unit;
 	
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "{product_image}",
-            joinColumns = @JoinColumn(name = "id_product"),
-            inverseJoinColumns = @JoinColumn(name = "id_Image")
-    )
-	private Set<Image> images;
+
 	
 	public String getCode() {
 		return code;
@@ -109,14 +103,7 @@ public class Product {
 		return;
 	}
 
-	public Set<Image> getImages() {
-		return images;
-	}
 
-	public void setImages(Set<Image> images) {
-		this.images = images;
-	}
-	
 	
 	
 }
