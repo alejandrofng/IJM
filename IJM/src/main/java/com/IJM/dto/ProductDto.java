@@ -1,6 +1,5 @@
 package com.IJM.dto;
 
-import java.util.Set;
 
 public class ProductDto {
 	
@@ -16,7 +15,7 @@ public class ProductDto {
 	
 	private String price;
 	
-	private Set<ImageDto> images;
+	private ImageDto image;
 	
 	public String getCode() {
 		return code;
@@ -66,12 +65,13 @@ public class ProductDto {
 		this.price = price;
 	}
 
-	public Set<ImageDto> getImages() {
-		return images;
+	public ImageDto getImage() {
+		return image;
 	}
 
-	public void setImages(Set<ImageDto> images) {
-		this.images = images;
+	public void setImage(ImageDto image) {
+		this.image = image;
 	}
+
 
 }
