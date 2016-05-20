@@ -15,7 +15,7 @@ public class ProductDto {
 	
 	private String price;
 	
-	private String image;
+	private ImageDto image;
 	
 	public String getCode() {
 		return code;
@@ -65,12 +65,13 @@ public class ProductDto {
 		this.price = price;
 	}
 
-	public String getImage() {
+	public ImageDto getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(ImageDto image) {
 		this.image = image;
 	}
-		
+
+
 }
