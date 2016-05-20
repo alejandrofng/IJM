@@ -1,6 +1,7 @@
 package com.IJM.mapper;
 
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
 import java.util.Base64;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +16,10 @@ public class ImageMapper {
 		ImageDto imageDto = new ImageDto();
 		imageDto.setId(image.getId());
 		imageDto.setFile(Base64.getEncoder().encodeToString((image.getFile())));
-		System.out.print(imageDto.getFile());
+		imageDto.setExtension(image.getExtension());
+		imageDto.setChecksum(image.getChecksum());
+		imageDto.setFile_name(image.getFile_name());
+		imageDto.setSize(image.getSize());
 		return imageDto;
 	}
 
@@ -26,6 +30,11 @@ public class ImageMapper {
 		image.setFile(newPicture);
 		try {
 			image.setChecksum(ChecksumConverter.getSHA(newPicture));
+			image.setExtension(imageDto.getExtension());
+			image.setFile_name(imageDto.getFile_name());
+			image.setSize(imageDto.getSize());
+			java.util.Date date= new java.util.Date();
+			image.setLast_Updated(new Timestamp(date.getTime()));
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
@@ -37,6 +46,11 @@ public class ImageMapper {
 		image.setFile(newPicture);
 		try {
 			image.setChecksum(ChecksumConverter.getSHA(newPicture));
+			image.setExtension(imageDto.getExtension());
+			image.setFile_name(imageDto.getFile_name());
+			image.setSize(imageDto.getSize());
+			java.util.Date date= new java.util.Date();
+			image.setLast_Updated(new Timestamp(date.getTime()));
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
