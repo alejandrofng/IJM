@@ -1,10 +1,12 @@
 package com.IJM.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,11 +33,11 @@ public class Product {
 	private String code;
 
 	@NotNull
-	@Size(min = 5, max = 50)
+	@Size(min = 2, max = 50)
 	@Column(name = "Name", nullable = false)
 	private String name;
 	
-	@Size(min = 5, max = 50)
+	@Size( max = 50)
 	@Column(name = "Description", nullable = false)
 	private String description;
 	
@@ -47,13 +49,13 @@ public class Product {
 	@JoinColumn(name = "Id_Unit")
 	private Unit unit;
 	
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinTable(
-            name = "{product_image}",
-            joinColumns = @JoinColumn(name = "id_product"),
-            inverseJoinColumns = @JoinColumn(name = "id_Image")
+            name = "product_image",
+            joinColumns = @JoinColumn(name = "Id_Product"),
+            inverseJoinColumns = @JoinColumn(name = "Id_Image")
     )
-	private Set<Image> images;
+	private Set<Image> images = new HashSet<Image>();
 	
 	public String getCode() {
 		return code;

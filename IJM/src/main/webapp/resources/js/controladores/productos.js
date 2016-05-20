@@ -157,11 +157,11 @@ $(document).ready(function () {
     	else
     	{
 	    	var categoria = {"id":$("#sCategoria").val()}	;
-	    	var image = {"file":imagen, "extension":control.files[0].type};
+	    	var image = [{"file":imagen, "extension":control.files[0].type, "size":control.files[0].size,"file_name":control.files[0].name}];
 	    	var producto = {"id":id_producto,"description":$("#tbDescripcionProducto").val(),
 	    			"price":$("#tbPrecioProducto").val(),"category":categoria,
 	    			"unit":null,"code":$("#tbCodigoProducto").val(),
-	    			"name":$("#tbNombreProducto").val(),"image":image};
+	    			"name":$("#tbNombreProducto").val(),"images":image};
 				
 	    	if(esEdicionDeProducto())
     		{	  

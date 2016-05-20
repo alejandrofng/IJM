@@ -18,6 +18,10 @@ public class ProductMapper {
 			productDto.setCategory(CategoryMapper.EntityToDto(product.getCategory()));
 		if(product.getUnit()!=null)
 			productDto.setUnit(UnitMapper.EntityToDto(product.getUnit()));
+		if(product.getImages()!=null)
+		{
+			productDto.setImages(ImageMapper.EntitySetToDtoSet(product.getImages()));
+		}
 		return productDto;
 	}
 
@@ -30,6 +34,8 @@ public class ProductMapper {
 			product.setCategory(CategoryMapper.DtoToEntity(productDto.getCategory()));
 		if(productDto.getUnit()!=null)
 			product.setUnit(UnitMapper.DtoToEntity(productDto.getUnit()));
+		if(productDto.getImages()!=null)
+			product.setImages(ImageMapper.DtoSetToEntitySet(productDto.getImages()));
 		return product;
 	}
 	public static void DtoToEntity(ProductDto productDto,Product product) {//Map an existent Entity to update

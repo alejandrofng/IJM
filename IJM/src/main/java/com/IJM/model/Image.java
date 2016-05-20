@@ -7,7 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -37,6 +40,14 @@ public class Image {
 	
 	@Column(name = "Last_Updated",nullable = false)
 	private Timestamp last_Updated;
+	
+	@ManyToOne
+	@JoinTable(
+            name = "product_image",
+            joinColumns = @JoinColumn(name = "Id_Image"),
+            inverseJoinColumns = @JoinColumn(name = "Id_Product")
+    )
+	private Product product;
 	
 	public long getId() {
 		return id;
@@ -92,6 +103,14 @@ public class Image {
 
 	public void setLast_Updated(Timestamp last_Updated) {
 		this.last_Updated = last_Updated;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 	
 	
