@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.IJM.dto.ProductDto;
-import com.IJM.model.FileType;
 import com.IJM.model.Image;
 import com.IJM.service.ProductService;
 
@@ -33,18 +32,6 @@ public class ProductController {
 		}
 
 		productService.saveProduct(productDto);
-		/*Codigo de prueba que iba en productDaoImpl.saveProduct
-		if(!product.getImages().isEmpty())
-		{
-			Set<Image> images = product.getImages();
-			for (Image image : images) {
-				FileType ft = image.getFileType();	
-				if(ft!=null)
-					System.out.println(ft.getPath());
-			}
-			System.out.println("Imagenes Cargadas");
-		}
-		else System.out.println("Imagenes No Cargadas");*/
 		System.out.println("A Product with name " + productDto.getName() + " has been added");
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}

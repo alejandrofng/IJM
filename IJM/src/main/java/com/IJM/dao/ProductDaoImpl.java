@@ -1,15 +1,12 @@
 package com.IJM.dao;
 
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import com.IJM.model.FileType;
-import com.IJM.model.Image;
 import com.IJM.model.Product;
 
 @Repository("productDao")

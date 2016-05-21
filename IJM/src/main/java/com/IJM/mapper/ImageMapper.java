@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.IJM.dto.ImageDto;
-import com.IJM.model.FileType;
 import com.IJM.model.Image;
 import com.IJM.util.ChecksumConverter;
 
@@ -34,9 +33,6 @@ public class ImageMapper {
 			image.setExtension(imageDto.getExtension());
 			image.setFile_name(imageDto.getFile_name());
 			image.setSize(imageDto.getSize());
-			FileType ft = new FileType();
-			ft.setId(1);
-			image.setFileType(ft);
 			java.util.Date date= new java.util.Date();
 			image.setLast_Updated(new Timestamp(date.getTime()));
 		} catch (NoSuchAlgorithmException e) {

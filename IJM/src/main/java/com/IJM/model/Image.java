@@ -42,10 +42,6 @@ public class Image {
 	@Column(name = "Last_Updated",nullable = false)
 	private Timestamp last_Updated;
 	
-	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "Id_File_Type")
-	private FileType fileType;
-	
 	@ManyToOne
 	@JoinTable(
             name = "product_image",
@@ -116,16 +112,5 @@ public class Image {
 
 	public void setProduct(Product product) {
 		this.product = product;
-	}
-
-	public FileType getFileType() {
-		return fileType;
-	}
-
-	public void setFileType(FileType fileType) {
-		this.fileType = fileType;
-	}
-	
-	
-	
+	}	
 }
