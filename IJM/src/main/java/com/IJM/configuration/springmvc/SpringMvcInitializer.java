@@ -1,5 +1,6 @@
 package com.IJM.configuration.springmvc;
 
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class SpringMvcInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -18,4 +19,6 @@ public class SpringMvcInitializer extends AbstractAnnotationConfigDispatcherServ
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
 	}
+	
+
 }

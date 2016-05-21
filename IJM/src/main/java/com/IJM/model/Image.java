@@ -2,6 +2,7 @@ package com.IJM.model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,6 +41,10 @@ public class Image {
 	
 	@Column(name = "Last_Updated",nullable = false)
 	private Timestamp last_Updated;
+	
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "Id_File_Type")
+	private FileType fileType;
 	
 	@ManyToOne
 	@JoinTable(
@@ -111,6 +116,14 @@ public class Image {
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+	public FileType getFileType() {
+		return fileType;
+	}
+
+	public void setFileType(FileType fileType) {
+		this.fileType = fileType;
 	}
 	
 	

@@ -1,7 +1,10 @@
 package com.IJM.configuration.springmvc;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -67,5 +70,16 @@ public class SpringMvcConfiguration extends WebMvcConfigurerAdapter {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.registerModule(new Hibernate5Module());
 		return mapper;
+	}
+	
+	@PostConstruct//creates directory
+	protected void createImagesFolders()
+	{
+		Boolean success = (new File("C:/IJM")).mkdirs();
+		if (!success) {
+		    System.out.print("No se pudo crear el directorio");
+		}
+		(new File("C:/IJM/Images")).mkdirs();
+		(new File("C:/IJM/Images/Product")).mkdirs();
 	}
 }
