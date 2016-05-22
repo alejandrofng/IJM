@@ -1,7 +1,9 @@
 package com.IJM.service;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.IJM.dao.ProductDao;
 import com.IJM.dto.ProductDto;
 import com.IJM.mapper.ProductMapper;
+import com.IJM.model.Image;
 import com.IJM.model.Product;
+import com.IJM.util.FileAlreadyExistsException;
+import com.IJM.util.ImageToFileConverter;
 
 @Transactional
 @Service("productService")
@@ -20,9 +25,24 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDao productDAO;
 
 	@Override
-	public void saveProduct(ProductDto productDto) {
+	public Product saveProduct(ProductDto productDto) {
 		Product product = ProductMapper.DtoToEntity(productDto);
+		
 		productDAO.save(product);
+		if(!product.getImages().isEmpty())
+		{
+			Set<Image> images = product.getImages();
+			for(Image image:images)
+			{
+				try {
+					ImageToFileConverter.convertStringToFile(image);
+				} catch (NullPointerException | FileAlreadyExistsException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return product;
 	}
 
 	@Override
@@ -78,6 +98,12 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> findAllProducts() {
 		List<Product> products = productDAO.findAll();
 		return products;
+	}
+
+	@Override
+	public Product findProductByCode(String code) {
+		Product product = productDAO.findByCode(code);
+		return product;
 	}
 	
 }

@@ -1,5 +1,6 @@
 package com.IJM.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
@@ -14,7 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.IJM.dto.ProductDto;
 import com.IJM.model.Image;
+import com.IJM.model.Product;
 import com.IJM.service.ProductService;
+import com.IJM.util.FileAlreadyExistsException;
+import com.IJM.util.ImageToFileConverter;
 
 @RestController
 @RequestMapping("/product")
@@ -31,7 +35,21 @@ public class ProductController {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		}
 
-		productService.saveProduct(productDto);
+		Product product = productService.saveProduct(productDto);
+		if(!product.getImages().isEmpty())
+		{
+			Set<Image> images = product.getImages();
+			for(Image image:images)
+			{
+				image.setProduct(product);
+				try {
+					ImageToFileConverter.convertStringToFile(image);
+				} catch (NullPointerException | FileAlreadyExistsException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 		System.out.println("A Product with name " + productDto.getName() + " has been added");
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}

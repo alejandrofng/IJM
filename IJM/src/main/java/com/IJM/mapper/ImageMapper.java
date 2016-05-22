@@ -26,15 +26,19 @@ public class ImageMapper {
 
 	public static Image DtoToEntity(ImageDto imageDto) {
 		Image image = new Image();
-		byte[] newPicture = Base64.getDecoder().decode(imageDto.getFile());
+		String file = imageDto.getFile().replace("data:image/jpeg;base64,","");
+		byte[] newPicture = Base64.getDecoder().decode(file);
+		String extension = imageDto.getExtension().replace("image/","");
+		image.setExtension(extension);
+		image.setFile_name(imageDto.getFile_name());
+		image.setSize(imageDto.getSize());
+		java.util.Date date= new java.util.Date();
+		image.setLast_Updated(new Timestamp(date.getTime()));
+		
 		image.setFile(newPicture);
 		try {
 			image.setChecksum(ChecksumConverter.getSHA(newPicture));
-			image.setExtension(imageDto.getExtension());
-			image.setFile_name(imageDto.getFile_name());
-			image.setSize(imageDto.getSize());
-			java.util.Date date= new java.util.Date();
-			image.setLast_Updated(new Timestamp(date.getTime()));
+			
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}

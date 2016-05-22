@@ -7,7 +7,7 @@ import com.IJM.model.Product;
 
 public interface ProductService {
 
-	public void saveProduct(ProductDto  productDto);
+	public Product saveProduct(ProductDto  productDto);
 	
 	void updateProduct(ProductDto productDto, String code);
 	
@@ -22,5 +22,7 @@ public interface ProductService {
 	public List<Product> findAllProducts();
 	
 	public ProductDto findProductDto(Long id);
+	
+	public Product findProductByCode(String code);
 
 }

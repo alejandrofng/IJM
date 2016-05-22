@@ -106,10 +106,12 @@ $(document).ready(function () {
         			{
 			            var reader = new FileReader();
 			            reader.onload = function(e) {
-			            	imagen = Base64.encode(e.target.result);
+			            	imagen = e.target.result;
+			            	console.log(imagen);
 			            };
 			           
-			            reader.readAsText(files[0]);
+			            reader.readAsDataURL(files[0]);
+
         			}
         		else 
         			{

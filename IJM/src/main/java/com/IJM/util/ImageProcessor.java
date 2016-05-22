@@ -41,10 +41,10 @@ public class ImageProcessor {
 	private static final float XXXHDPI_RATIO=16;
 	
 
-	public static void processImage(File f, File resDirectory, String originalSize,
-			String resFolder) throws FileAlreadyExistsException, IOException, NullPointerException {
+	public static void processImage(BufferedImage image, File resDirectory, String originalSize,
+			String resFolder,String name) throws FileAlreadyExistsException, IOException, NullPointerException {
 
-		String finalPath=resDirectory.getAbsolutePath() + "/drawable-"	+ resFolder + "/" + f.getName();
+		String finalPath=resDirectory.getAbsolutePath() +"/"+ resFolder + "/" + name;
 		
 		File destFile=new File(finalPath);
 		if(destFile.exists())
@@ -52,7 +52,6 @@ public class ImageProcessor {
 		
 		destFile.getParentFile().mkdirs();
 		
-		BufferedImage image = ImageIO.read(f);
 		
 		int size=getRequiredSize(originalSize,resFolder,image.getWidth());
 
@@ -62,7 +61,7 @@ public class ImageProcessor {
 		resampleOp.setUnsharpenMask(AdvancedResizeOp.UnsharpenMask.None);
 		image = resampleOp.filter(image, null);
 
-		ImageIO.write(image, getExtension(f.getName()), destFile);
+		ImageIO.write(image, getExtension(name), destFile);
 	}
 
 	private static int getRequiredSize(String originalSize, String resFolder,
