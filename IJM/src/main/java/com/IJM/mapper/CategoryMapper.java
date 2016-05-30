@@ -8,7 +8,7 @@ import com.IJM.model.Category;
 
 public class CategoryMapper {
 	
-	public static CategoryDto EntityToDto(Category category) {
+	public CategoryDto EntityToDto(Category category) {
 		CategoryDto categoryDto = new CategoryDto();
 		categoryDto.setName(category.getName());
 		categoryDto.setId(category.getId());
@@ -19,10 +19,11 @@ public class CategoryMapper {
 		return categoryDto;
 	}
 
-	public static Category DtoToEntity(CategoryDto categoryDto) {
+	public Category DtoToEntity(CategoryDto categoryDto) {
 		Category category = new Category();
 		category.setName(categoryDto.getName());
-		category.setId((categoryDto.getId()));
+		if(categoryDto.getId()!=null)
+			category.setId((categoryDto.getId()));
 		if(categoryDto.getId_parent()!=null)
 		{
 			//category.setParent(DtoToEntity(categoryDto.getParent()));
@@ -33,11 +34,11 @@ public class CategoryMapper {
 		return category;
 	}
 
-	public static List<CategoryDto> EntityListToDtoList(List<Category> categories){
+	public List<CategoryDto> EntityListToDtoList(List<Category> categories){
 		
 		List<CategoryDto> categoriesDto = new ArrayList<CategoryDto>();
 		for (Category category : categories) {
-			CategoryDto categoryDto = CategoryMapper.EntityToDto(category);
+			CategoryDto categoryDto = this.EntityToDto(category);
 			categoriesDto.add(categoryDto);
 		}
 		return categoriesDto;

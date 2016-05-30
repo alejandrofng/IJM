@@ -12,17 +12,16 @@ import com.IJM.model.Image;
 
 public class ImageToFileConverter {
 
-	private static String destination = "C:\\IJM\\Images\\Product" ;
 	public static boolean convertStringToFile(Image image) throws NullPointerException, FileAlreadyExistsException, IOException
 	{
 		InputStream in = new ByteArrayInputStream(image.getFile());
 		BufferedImage f=ImageIO.read(in);
 		
-		String imageFolder = destination+"\\"+image.getProduct().getCode();
+		String imageFolder = image.getDirectory().getPath()+"\\"+image.getProduct().getCode();
 		File destFolder  = new File(imageFolder);
 		(destFolder).mkdirs();
 		
-		String name = image.getProduct().getCode()+"."+image.getExtension();
+		String name = image.getProduct().getCode()+"-"+image.getChecksum()+"."+image.getExtension();
 		
 		ImageProcessor.processImage(f, destFolder , "xhdpi", "ldpi",name);
 		ImageProcessor.processImage(f, destFolder , "xhdpi", "mdpi",name);

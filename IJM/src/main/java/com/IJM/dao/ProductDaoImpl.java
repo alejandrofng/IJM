@@ -39,7 +39,7 @@ public class ProductDaoImpl extends AbstractDao<Long, Product> implements Produc
 	@Override
 	public Product findByCode(String code) {
 		Criteria criteria = getSession().createCriteria(Product.class);
-		criteria.add(Restrictions.ilike("code", code, MatchMode.ANYWHERE));
+		criteria.add(Restrictions.eq("code", code).ignoreCase());
 		return (Product) criteria.uniqueResult();
 	}
 	public void update(Product product) {

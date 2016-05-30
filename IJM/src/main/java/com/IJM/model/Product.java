@@ -48,12 +48,10 @@ public class Product {
 	@JoinColumn(name = "Id_Unit")
 	private Unit unit;
 	
-	@OneToMany(cascade = CascadeType.ALL,fetch= FetchType.EAGER)
-	@JoinTable(
-			name="product_image",
-			joinColumns = { @JoinColumn(name = "Id_Product") }, 
-            inverseJoinColumns = { @JoinColumn(name = "Id_Image") }
-			)
+	@OneToMany(cascade = CascadeType.ALL,
+			fetch= FetchType.EAGER,
+			orphanRemoval = true,
+			mappedBy="product")
 	private Set<Image> images;
 	
 	public String getCode() {

@@ -23,25 +23,21 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
 	private ProductDao productDAO;
+	
+	@Autowired
+	private DirectoryService directoryService;
 
+	private ProductMapper productMapper = new ProductMapper();
+	
 	@Override
 	public Product saveProduct(ProductDto productDto) {
-		Product product = ProductMapper.DtoToEntity(productDto);
-		
+		Product product = productMapper.DtoToEntity(productDto,directoryService);
 		productDAO.save(product);
-		if(!product.getImages().isEmpty())
-		{
-			Set<Image> images = product.getImages();
-			for(Image image:images)
-			{
-				try {
-					ImageToFileConverter.convertStringToFile(image);
-				} catch (NullPointerException | FileAlreadyExistsException | IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
+		return product;
+	}
+	
+	public Product saveProduct(Product product) {
+		productDAO.save(product);
 		return product;
 	}
 
@@ -49,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
 	public void updateProduct(ProductDto productDto, String code) {
 		Product product = productDAO.findByCode(code);
 		if (product != null) {
-			ProductMapper.DtoToEntity(productDto, product);
+			productMapper.DtoToEntity(productDto, product);
 			productDAO.update(product);
 		}
 	}
@@ -65,7 +61,7 @@ public class ProductServiceImpl implements ProductService {
 		Product product = productDAO.findByCode(code);
 		if(product!=null)
 		{
-			return ProductMapper.EntityToDto(product);
+			return productMapper.EntityToDto(product);
 		}
 		else return null;
 	}
@@ -74,7 +70,7 @@ public class ProductServiceImpl implements ProductService {
 		Product product = productDAO.findById(id);
 		if(product!=null)
 		{
-			return ProductMapper.EntityToDto(product);
+			return productMapper.EntityToDto(product);
 		}
 		else return null;
 	}
@@ -83,7 +79,7 @@ public class ProductServiceImpl implements ProductService {
 		List<Product> products = productDAO.findAll();
 		List<ProductDto> productsDto = new LinkedList<>();
 		for (Product product : products) {
-			ProductDto productDto = ProductMapper.EntityToDto(product);
+			ProductDto productDto = productMapper.EntityToDto(product);
 			productsDto.add(productDto);
 		}
 		return productsDto;

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.IJM.dto.ProductDto;
 import com.IJM.model.Image;
 import com.IJM.model.Product;
+import com.IJM.service.DirectoryService;
 import com.IJM.service.ProductService;
 import com.IJM.util.FileAlreadyExistsException;
 import com.IJM.util.ImageToFileConverter;

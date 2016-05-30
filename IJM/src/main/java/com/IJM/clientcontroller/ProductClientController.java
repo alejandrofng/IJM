@@ -55,7 +55,6 @@ public class ProductClientController {
      
         File file;
         String path="";
-       // file = new File(EXTERNAL_FILE_PATH+"/"+code+"/"+type);
         if(productService.isProductExist(code))
         {
         	Product product = productService.findProductByCode(code);
@@ -64,7 +63,7 @@ public class ProductClientController {
         	{
 	        	for(Image image:images)
 	        	{
-	        		path=EXTERNAL_FILE_PATH+"/"+code+"/"+type+"/"+code+"."+image.getExtension();
+	        		path=EXTERNAL_FILE_PATH+code+"/"+type+"/"+code+"-"+image.getChecksum()+"."+image.getExtension();
 	        	}
         	}
 	        file = new File(path);

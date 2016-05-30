@@ -7,12 +7,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.IJM.dto.ImageDto;
+import com.IJM.model.Directory;
 import com.IJM.model.Image;
 import com.IJM.util.ChecksumConverter;
 
 public class ImageMapper {
 
-	public static ImageDto EntityToDto(Image image) {
+	public ImageDto EntityToDto(Image image) {
 		ImageDto imageDto = new ImageDto();
 		imageDto.setId(image.getId());
 		imageDto.setFile(Base64.getEncoder().encodeToString((image.getFile())));
@@ -24,7 +25,7 @@ public class ImageMapper {
 	}
 
 
-	public static Image DtoToEntity(ImageDto imageDto) {
+	public Image DtoToEntity(ImageDto imageDto) {
 		Image image = new Image();
 		String file = imageDto.getFile().replace("data:image/jpeg;base64,","");
 		byte[] newPicture = Base64.getDecoder().decode(file);
@@ -45,7 +46,7 @@ public class ImageMapper {
 		return image;
 	}
 	
-	public static Image DtoToEntity(ImageDto imageDto, Image image) {
+	public Image DtoToEntity(ImageDto imageDto, Image image) {
 		byte[] newPicture = Base64.getDecoder().decode(imageDto.getFile());
 		image.setFile(newPicture);
 		try {
@@ -60,18 +61,19 @@ public class ImageMapper {
 		}
 		return image;
 	}
-	public static Set<ImageDto> EntitySetToDtoSet(Set<Image> images) {
+	public Set<ImageDto> EntitySetToDtoSet(Set<Image> images) {
 		Set<ImageDto> imagesDto = new HashSet<ImageDto>();
 		for (Image image : images) {
-		    ImageDto imageDto = ImageMapper.EntityToDto(image);
+		    ImageDto imageDto = this.EntityToDto(image);
 		    imagesDto.add(imageDto);
 		}
 		return imagesDto;
 	}
-	public static Set<Image> DtoSetToEntitySet(Set<ImageDto> imagesDto) {
+	public Set<Image> DtoSetToEntitySet(Set<ImageDto> imagesDto, Directory directory) {
 		Set<Image> images = new HashSet<Image>();
 		for (ImageDto imageDto : imagesDto) {
-			Image image = ImageMapper.DtoToEntity(imageDto);
+			Image image = this.DtoToEntity(imageDto);
+			image.setDirectory(directory);
 			images.add(image);
 		}
 		return images;

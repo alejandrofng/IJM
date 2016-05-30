@@ -19,7 +19,7 @@ public class ImageDaoImpl extends AbstractDao<Long,Image> implements ImageDao{
 
 	@Override
 	public void delete(Image image) {
-		delete(image);
+		super.delete(image);
 		
 	}
 

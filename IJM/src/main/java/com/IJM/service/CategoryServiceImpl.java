@@ -18,9 +18,11 @@ public class CategoryServiceImpl implements CategoryService {
 	@Autowired
 	CategoryDao categoryDao;
 	
+	CategoryMapper categoryMapper = new CategoryMapper();
+	
 	@Override
 	public void saveCategory(CategoryDto categoryDto) {
-		Category category = CategoryMapper.DtoToEntity(categoryDto);
+		Category category = categoryMapper.DtoToEntity(categoryDto);
 		categoryDao.save(category);
 	}
 
@@ -49,7 +51,7 @@ public class CategoryServiceImpl implements CategoryService {
 		List<Category> categories = categoryDao.findAll();
 		if(!categories.isEmpty())
 		{
-			return CategoryMapper.EntityListToDtoList(categories);
+			return categoryMapper.EntityListToDtoList(categories);
 		}
 		else return null;
 	}
@@ -57,17 +59,20 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public CategoryDto findCategoryDtoByCode(long code) {
 		Category category = categoryDao.findById(code);
-		return CategoryMapper.EntityToDto(category);
+		return categoryMapper.EntityToDto(category);
 	}
 
 	@Override
 	public boolean isCategoryNameAlreadyExists(CategoryDto categoryDto) {
 		Category aux = categoryDao.findByName(categoryDto.getName());
-		if(aux.getParent()==null && categoryDto.getId_parent()==null)
-			return true;
-		else if(aux.getParent()!=null && aux.getParent().getId()==categoryDto.getId_parent())
-			return true;
-		else return false;
+		if(aux!=null)
+		{
+			if(aux.getParent()==null && categoryDto.getId_parent()==null)
+				return true;
+			else if(aux.getParent()!=null && aux.getParent().getId()==categoryDto.getId_parent())
+				return true;
+		}
+		return false;
 	}
 
 	@Override

@@ -16,6 +16,7 @@ public class ImageServiceImpl implements ImageService{
 	@Autowired
 	ImageDao imageDao;
 	
+	private ImageMapper imageMapper = new ImageMapper();
 	@Override
 	public ImageDto findImageDtoById(long id) {
 		// TODO Auto-generated method stub
@@ -24,14 +25,14 @@ public class ImageServiceImpl implements ImageService{
 
 	@Override
 	public void saveImage(ImageDto imageDto) {
-		imageDao.save(ImageMapper.DtoToEntity(imageDto));
+		imageDao.save(imageMapper.DtoToEntity(imageDto));
 		
 	}
 
 	@Override
 	public void updateImage(ImageDto imageDto) {
 		Image image = imageDao.findById(imageDto.getId());
-		imageDao.update(ImageMapper.DtoToEntity(imageDto,image));
+		imageDao.update(imageMapper.DtoToEntity(imageDto,image));
 		
 	}
 
@@ -39,6 +40,12 @@ public class ImageServiceImpl implements ImageService{
 	public void deleteImage(long id) {
 		Image image = imageDao.findById(id);
 		imageDao.delete(image);
+		
+	}
+
+	@Override
+	public void saveImage(Image image) {
+		imageDao.save(image);
 		
 	}
 
