@@ -47,7 +47,7 @@ public class ImageController {
 				    image.setProduct(null);
 				    product.getImages().remove(image);
 				}
-				productService.saveProduct(product);
+				productService.updateProduct(product);
 				try{
 		    		
 		    		File file = new File(productImagePath+code);

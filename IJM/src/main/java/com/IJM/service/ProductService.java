@@ -27,4 +27,6 @@ public interface ProductService {
 	
 	public Product findProductByCode(String code);
 
+	void updateProduct(Product product);
+
 }

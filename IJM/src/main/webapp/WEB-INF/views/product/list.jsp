@@ -15,7 +15,7 @@
     <th  >Categoria</th>
     <th  >Precio</th>
     <th  >Imagen</th>
-    <th  colspan='2' >Acciones</th>
+    <th  colspan='3' >Acciones</th>
 </thead>
 <tbody>
 
@@ -28,6 +28,7 @@
         <td class='td-precio-producto'>aun no agregado</td>
         <!--AQUI EL URL DE LA IMAGEN DEL PRODUCTO-->
         <td class='td-imagen-producto'><img height="80" src="http://localhost:8090/IJM/productos/download/${product.code}/ldpi"> </td>
+        <td class='td-accion' width='50' ><img src='resources/img/Eliminar-Imagen.png' class='btn'></td>
         <td class='td-accion' width='50' ><img src='resources/img/Editar.png' class='btn editar-producto img-editar'></td>
         <td class='td-accion' width='50'><img src='resources/img/Eliminar.png' class='btn eliminar-producto img-eliminar' ></td>
     </tr>

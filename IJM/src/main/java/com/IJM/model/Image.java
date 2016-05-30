@@ -44,7 +44,7 @@ public class Image {
 	private Timestamp last_Updated;
 	
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	@JoinColumn(name="Id_Product")
 	private Product product;
 	
