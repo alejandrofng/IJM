@@ -4,10 +4,12 @@
  */
 var id_producto;
 var imagen="";
+var image = {"id":null,"checksum":null,"file":null, "extension":null,"size":null,"file_name":null};
 function reloadPage()
 {
 	id_producto=null;
 	imagen="";
+	image = {"id":null,"checksum":null,"file":null, "extension":null,"size":null,"file_name":null};
     var loc = window.location;
     window.location = loc.protocol + '//' + loc.host + loc.pathname + loc.search;
 }
@@ -35,7 +37,12 @@ function cargarProductoEnFormulario(data)
 	$("#tbCodigoProducto").val(data['code']);
 	$("#tbDescripcionProducto").val(data['description']);
 	$("#sCategoria").val(data['category']['id']);
-	$("#fileImagen").val(data['images']['0']['file_name']);
+	if(data['images'][0]!=null)
+		{
+			$("#fileDiv").hide();
+			image['id'] = data['images'][0]['id'];
+		}
+	else $("#fileDiv").show();
 }
 function obtenerProducto(id)
 {
@@ -150,15 +157,23 @@ $(document).ready(function () {
     		errorFormulario("Seleccione una categoria para el Producto!");
     		return;
 		}
-    	else if(imagen=="")
+    	else if(imagen=="" && image["id"]==null)
 		{
     		errorFormulario("Seleccione una imagen valida para el Producto!");
     		return;
 		}
     	else
     	{
-	    	var categoria = {"id":$("#sCategoria").val()}	;
-	    	var imagenes = [{"id":null,"checksum":null,"file":imagen, "extension":control.files[0].type,"size":control.files[0].size,"file_name":control.files[0].name}];
+	    	var categoria = {"id":$("#sCategoria").val(),"name":$("#sCategoria option:selected").text()};
+	    	if(image["id"]==null)
+	    	{
+		    	image['file'] = imagen;
+		    	image['extension'] = control.files[0].type;
+		    	image['size'] = control.files[0].size;
+		    	image['file_name'] = control.files[0].name;
+	    	}
+	    	var imagenes = [image];
+	    	
 	    	var producto = {"description":$("#tbDescripcionProducto").val(),
 	    			"price":$("#tbPrecioProducto").val(),"category":categoria,
 	    			"unit":null,"code":$("#tbCodigoProducto").val().toUpperCase(),

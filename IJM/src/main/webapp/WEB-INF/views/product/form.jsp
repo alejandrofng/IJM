@@ -47,8 +47,7 @@
                 <p id='info-tbPrecioProducto' class='help-block'></p>
             </div>
         </div>
-        </div>
-        <div class='row form-group'>
+        <div id="fileDiv" class='row form-group'>
             <div class='col-md-4'><label for='fileImagen' class='control-label filestyle'>Imagen</label></div>
             <div class='col-md-8'>
                 <input id='fileImagen' accept="image/*" class='filestyle form-control' name='imagen' type='file' required='true'  data-buttonText='Seleccionar Imagen' accept='image/*'/>

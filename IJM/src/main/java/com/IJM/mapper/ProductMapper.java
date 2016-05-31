@@ -56,7 +56,7 @@ public class ProductMapper {
 		}
 		return product;
 	}
-	public void DtoToEntity(ProductDto productDto,Product product) {//Map an existent Entity to update
+	public void DtoToEntity(ProductDto productDto,Product product,DirectoryService ds) {//Map an existent Entity to update
 		product.setCode(productDto.getCode());
 		product.setDescription(productDto.getDescription());
 		product.setName(productDto.getName());
@@ -64,6 +64,14 @@ public class ProductMapper {
 			product.setCategory(categoryMapper.DtoToEntity(productDto.getCategory()));
 		if(productDto.getUnit()!=null)
 			product.setUnit(UnitMapper.DtoToEntity(productDto.getUnit()));
+		if(productDto.getImages()!=null)
+		{
+			product.setImages(imageMapper.DtoSetToEntitySet(productDto.getImages(),ds.findDirectoryByName(name)));
+			for(Image image: product.getImages())
+			{
+				image.setProduct(product);
+			}
+		}
 	}
 	public Set<ProductDto> EntitySetToDtoSet(Set<Product> products) {
 		Set<ProductDto> productsDto = new HashSet<ProductDto>();

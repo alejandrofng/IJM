@@ -45,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
 	public void updateProduct(ProductDto productDto, String code) {
 		Product product = productDAO.findByCode(code);
 		if (product != null) {
-			productMapper.DtoToEntity(productDto, product);
+			productMapper.DtoToEntity(productDto, product,directoryService);
 			productDAO.update(product);
 		}
 	}
