@@ -42,12 +42,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void updateProduct(ProductDto productDto, String code) {
+	public Product updateProduct(ProductDto productDto, String code) {
 		Product product = productDAO.findByCode(code);
 		if (product != null) {
 			productMapper.DtoToEntity(productDto, product,directoryService);
 			productDAO.update(product);
 		}
+		return product;
 	}
 	
 	@Override

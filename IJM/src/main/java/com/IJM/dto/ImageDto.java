@@ -2,7 +2,7 @@ package com.IJM.dto;
 
 public class ImageDto {
 
-	private long id;
+	private Long id;
 
 	private String file;
 	
@@ -14,10 +14,10 @@ public class ImageDto {
 	
 	private String checksum;
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getFile() {

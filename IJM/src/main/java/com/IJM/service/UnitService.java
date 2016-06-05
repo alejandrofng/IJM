@@ -3,6 +3,7 @@ package com.IJM.service;
 import java.util.List;
 
 import com.IJM.dto.UnitDto;
+import com.IJM.model.Unit;
 
 public interface UnitService {
 
@@ -19,4 +20,6 @@ public interface UnitService {
 	public boolean isUnitNameAlreadyExists (UnitDto unitDto);
 	
 	public boolean isUnitExists(long code);
+
+	List<Unit> findAllUnits();
 }

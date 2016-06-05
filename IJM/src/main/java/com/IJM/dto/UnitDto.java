@@ -2,16 +2,16 @@ package com.IJM.dto;
 
 public class UnitDto {
 
-	private long code;
+	private Long id;
 	
 	private String name;
 
-	public long getCode() {
-		return code;
+	public Long getId() {
+		return id;
 	}
 
-	public void setCode(long code) {
-		this.code = code;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getName() {

@@ -48,6 +48,12 @@ public class Product {
 	@JoinColumn(name = "Id_Unit")
 	private Unit unit;
 	
+	@Column(name = "Price_regular", nullable = false)
+	private String price_regular;
+	
+	@Column(name = "Price_Discount")
+	private String price_discount;
+	
 	@OneToMany(cascade = CascadeType.ALL,
 			fetch= FetchType.EAGER,
 			orphanRemoval = true,
@@ -114,6 +120,22 @@ public class Product {
 
 	public void setImages(Set<Image> images) {
 		this.images = images;
+	}
+
+	public String getPrice_regular() {
+		return price_regular;
+	}
+
+	public void setPrice_regular(String price_regular) {
+		this.price_regular = price_regular;
+	}
+
+	public String getPrice_discount() {
+		return price_discount;
+	}
+
+	public void setPrice_discount(String price_discount) {
+		this.price_discount = price_discount;
 	}
 
 

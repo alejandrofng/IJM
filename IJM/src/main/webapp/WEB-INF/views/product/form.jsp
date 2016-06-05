@@ -41,10 +41,28 @@
             </div>
         </div>
         <div class='row form-group'>
-            <div class='col-md-4'><label for='tbPrecioProducto' class='control-label'>Precio</label></div>
+            <div class='col-md-4'><label for='cbUnidadProducto' class='control-label'>Unidad</label></div>
             <div class='col-md-8'>
-                <input id='tbPrecioProducto' class='form-control' required='true'/>
-                <p id='info-tbPrecioProducto' class='help-block'></p>
+                <select id='sUnidad' name="unit.id">
+                	<option value="" ><c:out value="Seleccione una Unidad"/></option>
+			    	<c:forEach items="${units}" var="unit">	    
+				        <option value="${unit.id}"><c:out value="${unit.name}"/></option>
+					</c:forEach>
+			 	</select>
+                <p id='cb-tbUnidadProducto' class='help-block'></p>
+            </div>
+        </div>
+        <div class='row form-group'>
+            <div class='col-md-4'><label for='tbPrecio_Regular_Producto' class='control-label'>Precio Regular</label></div>
+            <div class='col-md-8'>
+                <input id='tbPrecio_Regular_Producto' class='form-control' required='true'/>
+                <p id='info-tbPrecio_Regular_Producto' class='help-block'></p>
+            </div>
+         <div class='row form-group'>
+            <div class='col-md-4'><label for='tbPrecio_Descuento_Producto' class='control-label'>Precio con Descuento</label></div>
+            <div class='col-md-8'>
+                <input id='tbPrecio_Descuento_Producto' class='form-control' required='true'/>
+                <p id='info-recio_Descuento_Producto' class='help-block'></p>
             </div>
         </div>
         <div id="fileDiv" class='row form-group'>

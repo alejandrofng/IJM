@@ -6,6 +6,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.IJM.dto.ImageDto;
 import com.IJM.dto.ProductDto;
 import com.IJM.model.Directory;
 import com.IJM.model.Image;
@@ -26,6 +27,8 @@ public class ProductMapper {
 		productDto.setCode(product.getCode());
 		productDto.setDescription(product.getDescription());
 		productDto.setName(product.getName());
+		productDto.setPrice_regular(product.getPrice_regular());
+		productDto.setPrice_discount(product.getPrice_discount());
 		if(product.getCategory()!=null)
 			productDto.setCategory(categoryMapper.EntityToDto(product.getCategory()));
 		if(product.getUnit()!=null)
@@ -42,6 +45,8 @@ public class ProductMapper {
 		product.setCode(productDto.getCode());
 		product.setDescription(productDto.getDescription());
 		product.setName(productDto.getName());
+		product.setPrice_regular(productDto.getPrice_regular());
+		product.setPrice_discount(productDto.getPrice_discount());
 		if(productDto.getCategory()!=null)
 			product.setCategory(categoryMapper.DtoToEntity(productDto.getCategory()));
 		if(productDto.getUnit()!=null)
@@ -60,18 +65,33 @@ public class ProductMapper {
 		product.setCode(productDto.getCode());
 		product.setDescription(productDto.getDescription());
 		product.setName(productDto.getName());
+		product.setPrice_regular(productDto.getPrice_regular());
+		product.setPrice_discount(productDto.getPrice_discount());
 		if(productDto.getCategory()!=null)
 			product.setCategory(categoryMapper.DtoToEntity(productDto.getCategory()));
 		if(productDto.getUnit()!=null)
 			product.setUnit(UnitMapper.DtoToEntity(productDto.getUnit()));
 		if(productDto.getImages()!=null)
 		{
-			product.setImages(imageMapper.DtoSetToEntitySet(productDto.getImages(),ds.findDirectoryByName(name)));
-			for(Image image: product.getImages())
+			if(isImagesChanged(productDto))
 			{
-				image.setProduct(product);
+				product.getImages().addAll(imageMapper.DtoSetToEntitySet(productDto.getImages(),ds.findDirectoryByName(name)));
+				for(Image image: product.getImages())
+				{
+					image.setProduct(product);
+				}
 			}
 		}
+	}
+	public boolean isImagesChanged(ProductDto productDto)
+	{
+		for(ImageDto imageDto: productDto.getImages())
+		{
+			if(imageDto.getId()==null && imageDto.getFile()==null)
+				return false;
+				
+		}
+		return true;
 	}
 	public Set<ProductDto> EntitySetToDtoSet(Set<Product> products) {
 		Set<ProductDto> productsDto = new HashSet<ProductDto>();

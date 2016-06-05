@@ -26,7 +26,7 @@ public class UnitServiceImpl implements UnitService{
 
 	@Override
 	public void updateUnit(UnitDto unitDto) {
-		Unit unit = unitDao.findById(unitDto.getCode());
+		Unit unit = unitDao.findById(unitDto.getId());
 		unit.setName(unitDto.getName());
 		unitDao.update(unit);
 	}
@@ -66,6 +66,11 @@ public class UnitServiceImpl implements UnitService{
 		if(unitDao.findById(code)!=null)
 			return true;
 		return false;
+	}
+	@Override
+	public List<Unit> findAllUnits()
+	{
+		return unitDao.findAll();
 	}
 
 }

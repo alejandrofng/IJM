@@ -22,7 +22,12 @@ public class ImageServiceImpl implements ImageService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	@Override
+	public Image findImageById(long id) {
+		return imageDao.findById(id);
+	}
+	
 	@Override
 	public void saveImage(ImageDto imageDto) {
 		imageDao.save(imageMapper.DtoToEntity(imageDto));

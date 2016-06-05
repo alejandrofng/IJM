@@ -11,14 +11,15 @@ public class UnitMapper {
 	
 	public static UnitDto EntityToDto(Unit unit) {
 		UnitDto unitDto = new UnitDto();
-		unitDto.setCode(unit.getId());
+		unitDto.setId(unit.getId());
 		unitDto.setName(unit.getName());
 		return unitDto;
 	}
 
 	public static Unit DtoToEntity(UnitDto unitDto) {
 		Unit unit = new Unit();
-		unit.setId(unitDto.getCode());
+		if(unitDto.getId()!=null)
+		unit.setId(unitDto.getId());
 		unit.setName(unitDto.getName());
 		return unit;
 	}

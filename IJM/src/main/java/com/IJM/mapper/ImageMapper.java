@@ -2,21 +2,28 @@ package com.IJM.mapper;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
-import java.util.Base64;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.xml.bind.DatatypeConverter;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.IJM.dto.ImageDto;
 import com.IJM.model.Directory;
 import com.IJM.model.Image;
+import com.IJM.service.ImageService;
 import com.IJM.util.ChecksumConverter;
 
 public class ImageMapper {
 
+	@Autowired
+	ImageService imageService;
+	
 	public ImageDto EntityToDto(Image image) {
 		ImageDto imageDto = new ImageDto();
 		imageDto.setId(image.getId());
-		imageDto.setFile(Base64.getEncoder().encodeToString((image.getFile())));
+		imageDto.setFile(DatatypeConverter.printBase64Binary((image.getFile())));
 		imageDto.setExtension(image.getExtension());
 		imageDto.setChecksum(image.getChecksum());
 		imageDto.setFile_name(image.getFile_name());
@@ -27,27 +34,31 @@ public class ImageMapper {
 
 	public Image DtoToEntity(ImageDto imageDto) {
 		Image image = new Image();
-		String file = imageDto.getFile().replace("data:image/jpeg;base64,","");
-		byte[] newPicture = Base64.getDecoder().decode(file);
-		String extension = imageDto.getExtension().replace("image/","");
-		image.setExtension(extension);
-		image.setFile_name(imageDto.getFile_name());
-		image.setSize(imageDto.getSize());
-		java.util.Date date= new java.util.Date();
-		image.setLast_Updated(new Timestamp(date.getTime()));
-		
-		image.setFile(newPicture);
-		try {
-			image.setChecksum(ChecksumConverter.getSHA(newPicture));
+		if(imageDto.getId()==null)
+		{
+			String file = imageDto.getFile().replace("data:image/jpeg;base64,","");
+			byte[] newPicture = DatatypeConverter.parseBase64Binary(file);
+			String extension = imageDto.getExtension().replace("image/","");
+			image.setExtension(extension);
+			image.setFile_name(imageDto.getFile_name());
+			image.setSize(imageDto.getSize());
+			java.util.Date date= new java.util.Date();
+			image.setLast_Updated(new Timestamp(date.getTime()));
 			
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
+			image.setFile(newPicture);
+			try {
+				image.setChecksum(ChecksumConverter.getSHA(newPicture));
+				
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}
 		}
+		else image= imageService.findImageById(imageDto.getId());
 		return image;
 	}
 	
 	public Image DtoToEntity(ImageDto imageDto, Image image) {
-		byte[] newPicture = Base64.getDecoder().decode(imageDto.getFile());
+		byte[] newPicture = DatatypeConverter.parseBase64Binary(imageDto.getFile());
 		image.setFile(newPicture);
 		try {
 			image.setChecksum(ChecksumConverter.getSHA(newPicture));

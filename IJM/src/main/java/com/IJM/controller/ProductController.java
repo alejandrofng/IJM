@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.IJM.dto.ImageDto;
 import com.IJM.dto.ProductDto;
 import com.IJM.model.Image;
 import com.IJM.model.Product;
@@ -60,7 +61,29 @@ public class ProductController {
 		System.out.println("Updating Product " + code);
 		HttpStatus status;
 		try {
-			productService.updateProduct(productDto, code);
+			Boolean isNewImage = false;
+			Set<ImageDto> imagesDto = productDto.getImages();
+			for(ImageDto imageDto : imagesDto)
+			{
+				if(imageDto.getFile()==null && imageDto.getId()==null)
+					isNewImage = false;
+				else isNewImage = true;
+			}
+			Product product = productService.updateProduct(productDto, code);
+			if(!product.getImages().isEmpty() && isNewImage)
+			{
+				Set<Image> images = product.getImages();
+				for(Image image:images)
+				{
+					image.setProduct(product);
+					try {
+						ImageToFileConverter.convertStringToFile(image);
+					} catch (NullPointerException | FileAlreadyExistsException | IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
 			status = HttpStatus.OK;
 		} catch (Exception e) {
 			status = HttpStatus.CONFLICT;

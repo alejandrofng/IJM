@@ -27,6 +27,7 @@ Menu principal este archivo se importara en todas las views
             	<li><a class='a-menu-principal' href="/">Inicio</a></li>
                 <li class="active"><a class='a-menu-principal' href="categorias">Gestionar Categorias</a></li>
                 <li><a class='a-menu-principal' href="productos">Gestionar Productos</a></li>
+                <li><a class='a-menu-principal' href="unidades">Gestionar Unidades</a></li>
                 
                 <!--                <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>

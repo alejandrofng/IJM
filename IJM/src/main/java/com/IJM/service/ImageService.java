@@ -13,4 +13,6 @@ public interface ImageService {
 	public void deleteImage(long id);
 	
 	public ImageDto findImageDtoById (long id);
+
+	Image findImageById(long id);
 }

@@ -11,7 +11,7 @@ public interface ProductService {
 	
 	public Product saveProduct(Product product);
 	
-	void updateProduct(ProductDto productDto, String code);
+	public Product updateProduct(ProductDto productDto, String code);
 	
 	public void deleteProduct(String code);
 	

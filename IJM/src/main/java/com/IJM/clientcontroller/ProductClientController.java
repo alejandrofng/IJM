@@ -24,8 +24,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.IJM.model.Category;
 import com.IJM.model.Image;
 import com.IJM.model.Product;
+import com.IJM.model.Unit;
 import com.IJM.service.CategoryService;
 import com.IJM.service.ProductService;
+import com.IJM.service.UnitService;
 
 @Controller
 @RequestMapping("/productos")
@@ -35,6 +37,8 @@ public class ProductClientController {
 	ProductService productService;
 	@Autowired
 	CategoryService categoryService;
+	@Autowired
+	UnitService unitService;
 	
 	private static final String EXTERNAL_FILE_PATH="C:/IJM/Images/Product/";
 
@@ -44,9 +48,11 @@ public class ProductClientController {
 	{
 		List<Product> products = productService.findAllProducts();
 		List<Category> categories = categoryService.findAllCategories();
+		List<Unit> units = unitService.findAllUnits();
 		ModelAndView model = new ModelAndView("/product/view");
 		model.addObject("products",products);
 		model.addObject("categories",categories);
+		model.addObject("units",units);
 		return model;
 	}
 	

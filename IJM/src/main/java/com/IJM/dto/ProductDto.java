@@ -16,7 +16,9 @@ public class ProductDto {
 	
 	private UnitDto unit;
 	
-	private String price;
+	private String price_regular;
+	
+	private String price_discount;
 	
 	private Set<ImageDto> images;
 	
@@ -60,12 +62,12 @@ public class ProductDto {
 		this.unit = unit;
 	}
 
-	public String getPrice() {
-		return price;
+	public String getPrice_regular() {
+		return price_regular;
 	}
 
-	public void setPrice(String price) {
-		this.price = price;
+	public void setPrice_regular(String price) {
+		this.price_regular = price;
 	}
 
 	public Set<ImageDto> getImages() {
@@ -74,6 +76,14 @@ public class ProductDto {
 
 	public void setImages(Set<ImageDto> images) {
 		this.images = images;
+	}
+
+	public String getPrice_discount() {
+		return price_discount;
+	}
+
+	public void setPrice_discount(String price_discount) {
+		this.price_discount = price_discount;
 	}
 
 
